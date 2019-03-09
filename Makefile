@@ -1,7 +1,7 @@
 NAME	= fdf
 
 # src / obj files
-SRC		= main.c   
+SRC		= main.c fdf.c
 
 OBJ		= $(SRC:.c=.o)
 

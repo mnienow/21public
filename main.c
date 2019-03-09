@@ -11,106 +11,89 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "stdio.h"
-#include "./miniLibX/mlx.h"
 
-void	*newmap(t_map	*map)
+void	writer(t_map *map, int i)
 {
-    map->linemap = ft_strnew(1);
-    map->width = 1;
-    map->height = 0;
-	return (map);
-}
-
-void    reader(int fd, t_map *map)
-{
-    char    buf[BUFF_SIZE + 1];
-    int     ret;
-	int		i;
-	int 	index;
+	int		index;
 	int		column;
 
-    while ((ret = read(fd, buf, BUFF_SIZE)))
-    {
-        buf[ret] = '\0';
-        map->linemap = ft_strjoin(map->linemap, buf);
-    }
-	ret = -1;
-	while (map->linemap[++ret])
-	{
-		if (map->linemap[ret] == ' ' && map->height == 0)
-			map->width++;
-		if (map->linemap[ret] == '\n')
-			map->height++;
-		if (map->linemap[ret + 1] == ' ')
-			ret++;
-	}
-	map->intmap = (int **)malloc(sizeof(int *) * (map->height + 1));
-	map->intmap[map->height] = NULL;
-	ret = 0;
-	while (ret < map->height)
-	{
-		map->intmap[ret] = (int *)malloc(sizeof(int) * (map->width));
-		ret++;
-	}
+	map->imap = (int **)malloc(sizeof(int *) * (map->hgt + 1));
+	map->imap[map->hgt] = NULL;
+	while (i < map->hgt)
+		map->imap[i++] = (int *)malloc(sizeof(int) * (map->wid));
 	i = 0;
 	index = 0;
 	column = 0;
-	while(map->linemap[i])
+	while (map->lmap[i++])
 	{
-		if ((int)map->linemap[i] >= '0' && (int)map->linemap[i] <= '9')
+		if (map->lmap[i] >= '0' && map->lmap[i] <= '9')
 		{
-			map->intmap[column][index] = ft_atoi(&map->linemap[i]);
-			index++;
-			while ((int)map->linemap[i + 1] >= '0' && (int)map->linemap[i + 1] <= '9')
-					i++;
+			map->imap[column][index++] = ft_atoi(&map->lmap[i]);
+			while (map->lmap[i + 1] >= '0' && map->lmap[i + 1] <= '9')
+				i++;
 		}
-		if (map->linemap[i] == '\n')
+		if (map->lmap[i] == '\n')
 		{
 			column++;
 			index = 0;
 		}
-		i++;
 	}
 }
 
-int     main(int argc, char **argv)
+void	valider(t_map *map, int i)
 {
-    int     fd;
-    t_map   map;
-	int 	x = 0;
-	int 	y = 0;
-	int 	wid;
-	int		hgt = 0;
-	int		parcer = 0;
-
-    if (argc != 2)
-        return (0);
-   	newmap(&map);
-    fd = open(argv[1], O_RDONLY);
-    reader(fd, &map);
-	map.mlx = mlx_init();
-	map.window = mlx_new_window(map.mlx, WIDTH, HEIGHT, "my awesome fdf");
-	printf(" width: (%d)\n", map.width);
-	printf("height: %d)\n", map.height);
-	while (y < map.height)
+	while (map->lmap[++i])
 	{
-		wid = 20;
-		while (x < map.width)
-		{ 
-			while (parcer++ < 21)
-			{
-				mlx_pixel_put(map.mlx, map.window, x + wid + parcer, 20 + y + hgt, 0xFFFFFF);
-				mlx_pixel_put(map.mlx, map.window, x + wid, 20 + y + hgt + parcer, 0xFFFFFF);
-			}
-			parcer = 0;
-			wid += 20;
-			x++;
-		}
-		hgt += 20;
-		y++;
-		x = 0;
+		if (map->lmap[i] == ' ' && map->hgt == 0)
+			map->wid++;
+		if (map->lmap[i] == '\n')
+			map->hgt++;
+		if (map->lmap[i + 1] == ' ')
+			i++;
 	}
+	writer(map, 0);
+}
+
+int		reader(int fd, t_map *map)
+{
+	char	buf[BUFF_SIZE + 1];
+	int		ret;
+
+	while ((ret = read(fd, buf, BUFF_SIZE)))
+	{
+		if (ret < 0)
+			return (-1);
+		buf[ret] = '\0';
+		map->lmap = ft_strjoin(map->lmap, buf);
+	}
+	return (0);
+}
+
+void	*newmap(t_map *map)
+{
+	map->lmap = ft_strnew(1);
+	map->wid = 1;
+	map->hgt = 0;
+	return (map);
+}
+
+int		main(int argc, char **argv)
+{
+	int		fd;
+	t_map	map;
+
+	if (argc != 2)
+		return (0);
+	newmap(&map);
+	fd = open(argv[1], O_RDONLY);
+	reader(fd, &map);
+	valider(&map, -1);
+	map.mlx = mlx_init();
+	map.wdw = mlx_new_window(map.mlx, WIDTH, HEIGHT, "my awesome fdf");
+	printf(" width: (%d)\n", map.wid);
+	printf("height: %d)\n", map.hgt);
+	printf("");
+	printer(&map, 0, 0, 0);
 	mlx_loop(map.mlx);
-    return (0);
+	return (0);
 }

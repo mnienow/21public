@@ -14,23 +14,26 @@
 # define FDF_H
 
 # include "libft/libft.h"
+# include "./miniLibX/mlx.h"
+# include "stdio.h"
 # define WIDTH 1280
 # define HEIGHT 720
-
+# define CHN(y) if ((y) == 0) return (-1)
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 
 typedef struct s_map
 {
-    char    	*linemap;
-    int     	width;
-    int     	height;
-	int			**intmap;
+    char    	*lmap;
+    int     	wid;
+    int     	hgt;
+	int			**imap;
 	void		*mlx;
-	void		*window;
+	void		*wdw;
 }   t_map;
 
 int     main(int argc, char **argv);
+void	printer(t_map *map, int x, int y, int i);
 
 #endif
