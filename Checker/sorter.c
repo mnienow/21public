@@ -22,13 +22,10 @@ void	swap(t_lst *lst)
 	tmp->val = lst->val;
 	tmp->next = 0;
 	new = lst;
-	printf("%p\t%p\n", new->next, new);
 	while (new->next)
-	{
-		printf("|%d|\n", new->val);
 		new = new->next;
-	}
 	lst->val = new->val;
 	new->val = tmp->val;
+	printlst(lst);
 	printf("swap completed\n");
 }
