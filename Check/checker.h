@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef CHECKER_H
 # define CHECKER_H
 
@@ -25,8 +24,12 @@ typedef struct		s_lst
 	struct s_lst	*next;
 }					t_lst;
 
-t_lst	*lstnew(int val);
-void	printlst(t_lst *begin);
-void	swap(t_lst *lst);
+t_lst				*lstnew(int val);
+void				printlst(t_lst *begin, char lst);
+void				swap(t_lst **lst, char ch);
+void				push(t_lst **from, char ch, t_lst **to);
+void				rotate(t_lst **lst, char ch);
+void				rrotate(t_lst **lst, char ch);
+void				lstdelone(t_lst **alst);
 
 #endif

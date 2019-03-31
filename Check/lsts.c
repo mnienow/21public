@@ -23,20 +23,32 @@ t_lst	*lstnew(int val)
 	return (arr);
 }
 
-void	printlst(t_lst *begin)
+void	printlst(t_lst *begin, char lst)
 {
 	t_lst	*start;
 	char	*val;
 
 	val = 0;
 	start = begin;
-	while (start)
+	if (begin)
 	{
-		val = ft_itoa(start->val);
-		write(1, val, ft_strlen(val));
+		write(1, "stack ", 6);
+		write(1, &lst, 1);
 		write(1, "\n", 1);
-		start = start->next;
-		free(val);
-		val = 0;
+		while (start)
+		{
+			val = ft_itoa(start->val);
+			write(1, val, ft_strlen(val));
+			write(1, "\n", 1);
+			start = start->next;
+			free(val);
+			val = 0;
+		}
 	}
+}
+
+void	lstdelone(t_lst **alst)
+{
+	if (*alst != NULL)
+		ft_memdel((void **)alst);
 }
