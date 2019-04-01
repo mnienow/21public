@@ -13,6 +13,23 @@
 #include "checker.h"
 #include "../libft/libft.h"
 
+int		finalcheck(t_lst *a, t_lst *b)
+{
+	if (!b && a)
+	{
+		while (a->next)
+		{
+			if (a->val < a->next->val)
+				a = a->next;
+			else
+				break ;
+		}
+		if (!a->next)
+			return (0);
+	}
+	return (-1);
+}
+
 int		parser(t_lst **a, t_lst **b)
 {
 	char	*line;
@@ -60,21 +77,28 @@ int		checker(char **str)
 	printlst(sa, 'a');
 	parser(&sa, &b);
 	printlst(sa, 'a');
+	if (finalcheck(sa, b))
+		return (-2);
 	return (0);
 }
 
 int		main(int argc, char **argv)
 {
+	int result;
+
+	result = 0;
 	if (argc < 2)
 	{
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	if (checker(&argv[1]))
-	{
+	result = checker(&argv[1]);
+	if (result == -1)
 		write(1, "Error\n", 6);
-		return (0);
-	}
+	else if (result == -2)
+		write(1, "KO\n", 4);
+	else if (result == 0)
+		write(1, "OK\n", 4);		
 	return (0);
 }
 

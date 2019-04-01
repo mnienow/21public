@@ -17,8 +17,8 @@ void	swap(t_lst **lst, char ch)
 	t_lst	*new;
 	t_lst	*tmp;
 
-	if (!lst)
-		write(1, "b is empty\n", 12);
+	if (!*lst || !(*lst)->next)
+		write(1, "nothing to swap\n", 17);
 	else
 	{
 		write(1, "swap started\n", 14);
@@ -66,12 +66,13 @@ void	rotate(t_lst **lst, char ch)
 	t_lst	*tmp;
 
 	tmp = *lst;
-	last = lstnew((*lst)->val);
-	if (!*lst)
+	last = 0;
+	if (!*lst  || !(*lst)->next)
 		write(1, "nothing to rotate\n", 19);
 	else
 	{
 		write(1, "rotate started\n", 16);
+		last = lstnew((*lst)->val);
 		*lst = (*lst)->next;
 		lstdelone(&tmp);
 		tmp = (*lst);
@@ -91,7 +92,7 @@ void	rrotate(t_lst **lst, char ch)
 
 	tmp = *lst;
 	first = 0;
-	if (!*lst)
+	if (!*lst || !(*lst)->next)
 		write(1, "nothing to rrotate\n", 19);
 	else
 	{
