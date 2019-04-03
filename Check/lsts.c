@@ -52,3 +52,9 @@ void	lstdelone(t_lst **alst)
 	if (*alst != NULL)
 		ft_memdel((void **)alst);
 }
+
+void	err(void)
+{
+	write(1, "Error\n", 6);
+	exit(0);
+}

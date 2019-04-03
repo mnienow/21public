@@ -1,6 +1,6 @@
 NAME = checker
 
-SRCS = ./Check/main.c ./Check/lsts.c ./Check/ops.c ./libft/ft_atoi.c \
+SRCS = ./Check/main.c ./Check/check.c ./Check/lsts.c ./Check/ops.c ./libft/ft_atoi.c \
 ./libft/ft_itoa.c ./libft/ft_strcmp.c ./libft/ft_strlen.c \
 ./libft/get_next_line.c ./libft/ft_bzero.c ./libft/ft_lstadd.c \
 ./libft/ft_lstnew.c ./libft/ft_strdup.c ./libft/ft_strjoin.c \

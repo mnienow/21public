@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcmp.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstannis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 01:08:18 by sstannis          #+#    #+#             */
-/*   Updated: 2018/12/02 01:08:19 by sstannis         ###   ########.fr       */
+/*   Created: 2018/12/02 14:52:28 by mnienow           #+#    #+#             */
+/*   Updated: 2018/12/09 15:02:52 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 int		ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	if (s1[i] != s2[i])
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
+	while ((unsigned char)s1[i] && (unsigned char)s2[i])
+	{
+		if ((unsigned char)s1[i] == (unsigned char)s2[i])
+			i++;
+		else
+			break ;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

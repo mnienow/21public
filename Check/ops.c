@@ -12,7 +12,7 @@
 
 #include "checker.h"
 
-void	swap(t_lst **lst, char ch)
+void	swap(t_lst **lst, char ch, t_lst **sec)
 {
 	t_lst	*new;
 	t_lst	*tmp;
@@ -30,7 +30,8 @@ void	swap(t_lst **lst, char ch)
 		(*lst)->val = new->val;
 		new->val = tmp->val;
 		*lst = (*lst);
-		printlst(*lst, ch);
+		ch == 'a' ? printlst(*lst, ch) : printlst(*sec, 'a');
+		ch == 'a' ? printlst(*sec, 'b') : printlst(*lst, ch);
 		write(1, "swap completed\n", 16);
 	}
 }
@@ -55,19 +56,19 @@ void	push(t_lst **from, char ch, t_lst **to)
 		tmp = *from;
 		*from = (*from)->next;
 		lstdelone(&tmp);
-		printlst(*from, ch);
-		ch == 'a' ? printlst(*to, 'b') : printlst(*to, 'a');
+		ch == 'a' ? printlst(*from, ch) : printlst(*to, 'a');
+		ch == 'a' ? printlst(*to, 'b') : printlst(*from, ch);
 	}
 }
 
-void	rotate(t_lst **lst, char ch)
+void	rotate(t_lst **lst, char ch, t_lst **sec)
 {
 	t_lst	*last;
 	t_lst	*tmp;
 
 	tmp = *lst;
 	last = 0;
-	if (!*lst  || !(*lst)->next)
+	if (!*lst || !(*lst)->next)
 		write(1, "nothing to rotate\n", 19);
 	else
 	{
@@ -76,16 +77,17 @@ void	rotate(t_lst **lst, char ch)
 		*lst = (*lst)->next;
 		lstdelone(&tmp);
 		tmp = (*lst);
-		while((*lst)->next)
+		while ((*lst)->next)
 			(*lst) = (*lst)->next;
 		(*lst)->next = last;
 		(*lst) = tmp;
-		printlst(*lst, ch);
+		ch == 'a' ? printlst(*lst, ch) : printlst(*sec, 'a');
+		ch == 'a' ? printlst(*sec, 'b') : printlst(*lst, ch);
 		write(1, "rotate completed\n", 18);
 	}
 }
 
-void	rrotate(t_lst **lst, char ch)
+void	rrotate(t_lst **lst, char ch, t_lst **sec)
 {
 	t_lst	*first;
 	t_lst	*tmp;
@@ -97,7 +99,7 @@ void	rrotate(t_lst **lst, char ch)
 	else
 	{
 		write(1, "rrotate started\n", 16);
-		while((*lst)->next->next)
+		while ((*lst)->next->next)
 			(*lst) = (*lst)->next;
 		first = lstnew((*lst)->next->val);
 		lstdelone(&(*lst)->next);
@@ -105,7 +107,8 @@ void	rrotate(t_lst **lst, char ch)
 		*lst = tmp;
 		first->next = *lst;
 		*lst = first;
-		printlst(*lst, ch);
+		ch == 'a' ? printlst(*lst, ch) : printlst(*sec, 'a');
+		ch == 'a' ? printlst(*sec, 'b') : printlst(*lst, ch);
 		write(1, "rrotate completed\n", 18);
 	}
 }
