@@ -1,26 +1,54 @@
 NAME = checker
 
-SRCS = ./Check/main.c ./Check/check.c ./Check/lsts.c ./Check/ops.c ./libft/ft_atoi.c \
-./libft/ft_itoa.c ./libft/ft_strcmp.c ./libft/ft_strlen.c \
-./libft/get_next_line.c ./libft/ft_bzero.c ./libft/ft_lstadd.c \
-./libft/ft_lstnew.c ./libft/ft_strdup.c ./libft/ft_strjoin.c \
-./libft/ft_strnew.c ./libft/ft_strsub.c ./libft/ft_memcpy.c \
-./libft/ft_strcat.c ./libft/ft_strcpy.c ./libft/ft_strncpy.c \
-./libft/ft_memdel.c
+PUSH = push_swap
+
+SRCS = check.c lsts.c ops.c 
+
+LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
+get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
+ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
+ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
+ft_memdel.c
+
+MAIN1 = main1.c
+
+MAIN2 = main2.c
+
+SRC1 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1))
+
+SRC2 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2))
 
 FLAGS = -Wall -Wextra -Werror
 
-OUTPUT = *.o
+OUT1 = ./Check/
+
+OUT2 = ./Push/
+
+OUT = ./libft/
+
+OUTPUT1 = $(SRCS:.c=.o) $(MAIN1:.c=.o) $(LIB:.c=.o)
+
+OUTPUT2 = $(SRCS:.c=.o) $(MAIN2:.c=.o) $(LIB:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) $(SRCS) -c -I ./Check
-	gcc $(OUTPUT) -I ./Check -o $(NAME)
+	gcc $(FLAGS) $(SRC1) -c
+	gcc $(OUTPUT1)  -o $(NAME)
+	
+.PHONY: push
+
+push:
+	gcc $(FLAGS) $(SRC2) -c
+	gcc $(OUTPUT2) -o $(PUSH)
 
 clean:
 	make -C ./libft clean
-	/bin/rm -f $(OUTPUT) rm -f ft_printf.h.gch
+	/bin/rm -f $(OUTPUT1) rm -f ft_printf.h.gch
+
+clean2:
+	rm main2.o
+	rm $(PUSH)
 
 fclean: clean
 	make -C ./libft fclean

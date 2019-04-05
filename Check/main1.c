@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 21:51:31 by mnienow           #+#    #+#             */
-/*   Updated: 2019/04/03 21:51:33 by mnienow          ###   ########.fr       */
+/*   Created: 2019/04/03 21:47:45 by mnienow           #+#    #+#             */
+/*   Updated: 2019/04/03 21:47:50 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../push_swap.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../Check/checker.h"
+int			main(int argc, char **argv)
+{
+	int		i;
 
-
-#endif
+	i = 0;
+	if (argc < 2)
+		err();
+	valider1(&argv[1]);
+	i = checker(&argv[1], 0);
+	if (i)
+		write(1, "KO\n", 4);
+	else
+		write(1, "OK\n", 4);
+	return (0);
+}

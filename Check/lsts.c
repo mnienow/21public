@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../push_swap.h"
 
 t_lst	*lstnew(int val)
 {
@@ -57,4 +57,10 @@ void	err(void)
 {
 	write(1, "Error\n", 6);
 	exit(0);
+}
+
+void	parser2(t_lst **a, t_lst **b)
+{
+	(void)a;
+	(void)b;
 }

@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct		s_lst
 {
@@ -32,6 +32,8 @@ void				rotate(t_lst **lst, char ch, t_lst **sec);
 void				rrotate(t_lst **lst, char ch, t_lst **sec);
 void				lstdelone(t_lst **alst);
 void				err(void);
-int					checker(char **str);
+int					checker(char **str, char op);
+void				valider1(char **str);
+void				parser2(t_lst **a, t_lst **b);
 
 #endif

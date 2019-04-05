@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../push_swap.h"
 
 void	swap(t_lst **lst, char ch, t_lst **sec)
 {

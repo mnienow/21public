@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "../libft/libft.h"
+#include "../push_swap.h"
 
-int		finalcheck(t_lst *a, t_lst *b)
+int			finalcheck(t_lst *a, t_lst *b)
 {
 	if (!b && a)
 	{
@@ -30,7 +29,7 @@ int		finalcheck(t_lst *a, t_lst *b)
 	return (-1);
 }
 
-int		parser(t_lst **a, t_lst **b)
+static int	parser1(t_lst **a, t_lst **b)
 {
 	char	*line;
 
@@ -59,7 +58,7 @@ int		parser(t_lst **a, t_lst **b)
 	return (0);
 }
 
-int		firstcheck(t_lst *a)
+int			firstcheck(t_lst *a)
 {
 	t_lst	*b;
 	int		val;
@@ -85,29 +84,52 @@ int		firstcheck(t_lst *a)
 	return (0);
 }
 
-int		checker(char **str)
+int			checker(char **str, char op)
 {
 	int		i;
-	int		j;
 	t_lst	*a;
-	t_lst	*sa;
 	t_lst	*b;
 
 	i = 0;
-	j = 0;
 	a = (t_lst *)malloc(sizeof(t_lst));
 	a->val = ft_atoi(str[i++]);
-	sa = a;
-	b = 0;
+	b = a;
 	while (str[i])
 	{
 		a->next = lstnew(ft_atoi(str[i++]));
 		a = a->next;
 	}
-	if (firstcheck(sa))
-		return (-1);
-	parser(&sa, &b);
-	if (finalcheck(sa, b))
-		return (-2);
+	a = b;
+	b = 0;
+	if (firstcheck(a))
+		err();
+	if (!op)
+	{
+		parser1(&a, &b);
+		if (finalcheck(a, b))
+			return (-2);
+	}
+	else
+		parser2(&a, &b);
 	return (0);
+}
+
+void		valider1(char **str)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (str[++i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if ((str[i][j] >= 48 && str[i][j] <= 57) || str[i][j] == 45 ||
+			str[i][j] == 32)
+				j++;
+			else
+				err();
+		}
+	}
 }
