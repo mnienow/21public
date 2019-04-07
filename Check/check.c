@@ -42,9 +42,9 @@ static int	parser1(t_lst **a, t_lst **b)
 		if (!ft_strcmp(line, "sb") || !ft_strcmp(line, "ss"))
 			swap(b, 'b', a);
 		if (!ft_strcmp(line, "pa"))
-			push(b, 'b', a);
+			push(b, 'a', a);
 		if (!ft_strcmp(line, "pb"))
-			push(a, 'a', b);
+			push(a, 'b', b);
 		if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rr"))
 			rotate(a, 'a', b);
 		if (!ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
@@ -110,7 +110,7 @@ int			checker(char **str, char op)
 			return (-2);
 	}
 	else
-		parser2(&a, &b);
+		parser2(&a, &b, i);
 	return (0);
 }
 

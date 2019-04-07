@@ -34,6 +34,7 @@ void				lstdelone(t_lst **alst);
 void				err(void);
 int					checker(char **str, char op);
 void				valider1(char **str);
-void				parser2(t_lst **a, t_lst **b);
+void				parser2(t_lst **a, t_lst **b, int i);
+int					findmed(t_lst **a, int i);
 
 #endif

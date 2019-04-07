@@ -59,8 +59,28 @@ void	err(void)
 	exit(0);
 }
 
-void	parser2(t_lst **a, t_lst **b)
+void	parser2(t_lst **a, t_lst **b, int i)
 {
-	(void)a;
-	(void)b;
+	t_lst	**sa;
+	t_lst	**sb;
+	int		pivot;
+
+	sa = a;
+	sb = b;
+	pivot = findmed(a , i);
+	printf("PIVOT = %d\n", pivot);
+	// while (*a)
+	// {
+	// 	if ((*a)->val < pivot)
+	// 		push(sa, 'b', sb);
+	// 	else
+	// 		rotate(sa, 'a', sb);
+	// }
+	// while (*b)
+	// {
+	// 	if ((*b)->val >= pivot)
+	// 		push(sb, 'a', sa);
+	// 	else
+	// 		rotate(sa, 'b', sb);
+	// }
 }
