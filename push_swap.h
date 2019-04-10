@@ -32,9 +32,10 @@ void				rotate(t_lst **lst, char ch, t_lst **sec);
 void				rrotate(t_lst **lst, char ch, t_lst **sec);
 void				lstdelone(t_lst **alst);
 void				err(void);
-int					checker(char **str, char op);
+int					checker(char **str, int i, char op);
 void				valider1(char **str);
-void				parser2(t_lst **a, t_lst **b, int i);
-int					findmed(t_lst **a, int i);
+void				parser2(t_lst **a, t_lst **b, int len);
+int					findmed(t_lst **a);
+int					findmed2(t_lst **a, int len);
 
 #endif

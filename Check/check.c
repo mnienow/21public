@@ -84,13 +84,11 @@ int			firstcheck(t_lst *a)
 	return (0);
 }
 
-int			checker(char **str, char op)
+int			checker(char **str, int i, char op)
 {
-	int		i;
 	t_lst	*a;
 	t_lst	*b;
 
-	i = 0;
 	a = (t_lst *)malloc(sizeof(t_lst));
 	a->val = ft_atoi(str[i++]);
 	b = a;

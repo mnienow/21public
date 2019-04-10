@@ -2,7 +2,7 @@ NAME = checker
 
 PUSH = push_swap
 
-SRCS = check.c lsts.c ops.c 1.c
+SRCS = check.c lsts.c ops.c new.c
 
 LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
 get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \

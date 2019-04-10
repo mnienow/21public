@@ -59,7 +59,7 @@ void	err(void)
 	exit(0);
 }
 
-void	parser2(t_lst **a, t_lst **b, int i)
+void	parser2(t_lst **a, t_lst **b, int len)
 {
 	t_lst	**sa;
 	t_lst	**sb;
@@ -67,19 +67,26 @@ void	parser2(t_lst **a, t_lst **b, int i)
 
 	sa = a;
 	sb = b;
-	pivot = findmed(a , i);
-	printf("PIVOT = %d\n", pivot);
-	// while (*a)
-	// {
-	// 	if ((*a)->val < pivot)
-	// 		push(sa, 'b', sb);
-	// 	else
-	// 		rotate(sa, 'a', sb);
-	// }
-	// while (*b)
+	pivot = findmed2(a, len);
+	len /= 2;
+	while (*a && len)
+	{
+		if ((*a)->val <= pivot)
+		{
+			push(sa, 'b', sb);
+			len--;
+		}
+		else
+			rotate(sa, 'a', sb);
+	}
+	// len = i / 2;
+	// while (*b && len)
 	// {
 	// 	if ((*b)->val >= pivot)
+	// 	{
 	// 		push(sb, 'a', sa);
+	// 		len--;
+	// 	}
 	// 	else
 	// 		rotate(sa, 'b', sb);
 	// }

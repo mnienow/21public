@@ -20,7 +20,7 @@ int			main(int argc, char **argv)
 	if (argc < 2)
 		err();
 	valider1(&argv[1]);
-	i = checker(&argv[1], 0);
+	i = checker(&argv[1], 0, 0);
 	if (i)
 		write(1, "KO\n", 4);
 	else
