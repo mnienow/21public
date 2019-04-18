@@ -20,11 +20,11 @@
 
 typedef struct		s_lst
 {
-	int				val;
+	long				val;
 	struct s_lst	*next;
 }					t_lst;
 
-t_lst				*lstnew(int val);
+t_lst				*lstnew(long val);
 void				printlst(t_lst *begin, char lst);
 void				swap(t_lst **lst, char ch, t_lst **sec);
 void				push(t_lst **from, char ch, t_lst **to);
@@ -37,5 +37,6 @@ void				valider1(char **str);
 void				parser2(t_lst **a, t_lst **b, int len);
 int					findmed(t_lst **a);
 int					findmed2(t_lst **a, int len);
+long				ft_atol(const char *str);
 
 #endif

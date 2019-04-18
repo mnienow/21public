@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-t_lst	*lstnew(int val)
+t_lst	*lstnew(long val)
 {
 	t_lst	*arr;
 
@@ -68,32 +68,31 @@ void	parser2(t_lst **a, t_lst **b, int len)
 	int		l;
 
 	r = 0;
-	l = len;
 	sa = a;
 	sb = b;
-	while (l)
+	l = len;
+	while (l /= 2)
 	{
-		pivot = findmed2(a, l);
-		printf("|%d\t%d|\n", l, pivot);
+		pivot = findmed2(a, len);
+		printf("pivot = %d\n", pivot);
+		len = l;
 		while (*a && l)
 		{
-			(*a)->val <= pivot ? l-- : r++;
-			if (!r)
-				(*a)->val <= pivot ? push(sa, 'b', sb) : rotate(sa, 'a', sb);
+			if ((*a)->val <= pivot)
+			{
+				if ((*a)->next->val <= pivot && (*a)->next->val < (*a)->val)
+					swap(a, 'a', b);
+				push(sa, 'b', sb);\
+				l--;
+			}
+			else if ((*a)->next->val <= pivot)
+				swap(a, 'a', b);
 			else
-				break ;
+				rotate(sa, 'a', sb);
 		}
-		l = l / 2;
+		if (*b)
+			if ((*b)->next)
+				if ((*b)->val < (*b)->next->val)
+					swap(b, 'b', a);
 	}
-	// len = i / 2;
-	// while (*b && len)
-	// {
-	// 	if ((*b)->val >= pivot)
-	// 	{
-	// 		push(sb, 'a', sa);
-	// 		len--;
-	// 	}
-	// 	else
-	// 		rotate(sa, 'b', sb);
-	// }
 }

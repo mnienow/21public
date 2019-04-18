@@ -82,7 +82,7 @@ int		findercycle(t_lst *sa, int len, int val, int count)
 		val = s->val;
 	}
 	len = len / 2;
-	while (len--)
+	while (--len)
 		sa = sa->next;
 	return (sa->val);
 }
@@ -92,5 +92,5 @@ int		findmed2(t_lst **a, int len)
 	t_lst	*sa;
 
 	sa = lstcpy(*a);
-	return (findercycle(sa, len, 0, 0));
+	return (findercycle(sa, len, 0, 1));
 }

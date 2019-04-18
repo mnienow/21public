@@ -2,7 +2,7 @@ NAME = checker
 
 PUSH = push_swap
 
-SRCS = check.c lsts.c ops.c new.c
+SRCS = check.c lsts.c ops.c new.c atol.c
 
 LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
 get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
@@ -34,24 +34,21 @@ all: $(NAME)
 
 $(NAME):
 	gcc $(FLAGS) $(SRC1) -c
-	gcc $(OUTPUT1)  -o $(NAME)
+	gcc $(OUTPUT1) -o $(NAME)
 
 .PHONY: push
 
 push:
-	gcc $(FLAGS) $(SRC2) -c
-	gcc $(OUTPUT2) -o $(PUSH)
+	gcc $(FLAGS) $(SRC2) -c -std=c11 -ggdb3
+	gcc $(OUTPUT2) -o $(PUSH) -std=c11 -ggdb3 $(FLAGS) 
 
 clean:
 	make -C ./libft clean
 	/bin/rm -f $(OUTPUT1) rm -f ft_printf.h.gch
 
-clean2:
-	rm main2.o
-	rm $(PUSH)
-
 fclean: clean
 	make -C ./libft fclean
 	/bin/rm -f $(NAME)
+	/bin/rm -f $(PUSH)
 
 re: fclean all

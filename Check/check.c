@@ -34,27 +34,27 @@ static int	parser1(t_lst **a, t_lst **b)
 	char	*line;
 
 	line = 0;
-	printlst(*a, 'a');
 	while (get_next_line(0, &line))
 	{
 		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "ss"))
 			swap(a, 'a', b);
-		if (!ft_strcmp(line, "sb") || !ft_strcmp(line, "ss"))
+		else if (!ft_strcmp(line, "sb") || !ft_strcmp(line, "ss"))
 			swap(b, 'b', a);
-		if (!ft_strcmp(line, "pa"))
+		else if (!ft_strcmp(line, "pa"))
 			push(b, 'a', a);
-		if (!ft_strcmp(line, "pb"))
+		else if (!ft_strcmp(line, "pb"))
 			push(a, 'b', b);
-		if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rr"))
+		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rr"))
 			rotate(a, 'a', b);
-		if (!ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
+		else if (!ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
 			rotate(b, 'b', a);
-		if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrr"))
+		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrr"))
 			rrotate(a, 'a', b);
-		if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
+		else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 			rrotate(b, 'b', a);
+		else
+			return (-1);
 	}
-	printlst(*a, 'a');
 	return (0);
 }
 
@@ -63,23 +63,23 @@ int			firstcheck(t_lst *a)
 	t_lst	*b;
 	int		val;
 
-	val = 0;
 	b = a;
-	if (a)
+	if (a->val > 2147483647 || a->val < -2147483648)
+		return (-1);
+	while (a && a->next)
 	{
+		if (a->next->val > 2147483647 || a->next->val < -2147483648)
+			return (-1);
+		val = a->val;
 		while (a->next)
 		{
-			val = a->val;
-			while (a->next)
-			{
-				if (a->next->val != val)
-					a = a->next;
-				else
-					return (-1);
-			}
-			b = b->next;
-			a = b;
+			if (a->next->val != val)
+				a = a->next;
+			else
+				return (-1);
 		}
+		b = b->next;
+		a = b;
 	}
 	return (0);
 }
@@ -90,13 +90,14 @@ int			checker(char **str, int i, char op)
 	t_lst	*b;
 
 	a = (t_lst *)malloc(sizeof(t_lst));
-	a->val = ft_atoi(str[i++]);
+	a->val = ft_atol(str[i++]);
 	b = a;
 	while (str[i])
 	{
-		a->next = lstnew(ft_atoi(str[i++]));
+		a->next = lstnew(ft_atol(str[i++]));
 		a = a->next;
 	}
+	a->next = 0;
 	a = b;
 	b = 0;
 	if (firstcheck(a))
