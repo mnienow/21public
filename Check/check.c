@@ -29,7 +29,7 @@ int			finalcheck(t_lst *a, t_lst *b)
 	return (-1);
 }
 
-static int	parser1(t_lst **a, t_lst **b)
+static void	parser1(t_lst **a, t_lst **b)
 {
 	char	*line;
 
@@ -53,35 +53,33 @@ static int	parser1(t_lst **a, t_lst **b)
 		else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 			rrotate(b, 'b', a);
 		else
-			return (-1);
+			err();
 	}
-	return (0);
 }
 
-int			firstcheck(t_lst *a)
+void		firstcheck(t_lst *a)
 {
 	t_lst	*b;
 	int		val;
 
 	b = a;
 	if (a->val > 2147483647 || a->val < -2147483648)
-		return (-1);
+		err();
 	while (a && a->next)
 	{
 		if (a->next->val > 2147483647 || a->next->val < -2147483648)
-			return (-1);
+			err();
 		val = a->val;
 		while (a->next)
 		{
 			if (a->next->val != val)
 				a = a->next;
 			else
-				return (-1);
+				err();
 		}
 		b = b->next;
 		a = b;
 	}
-	return (0);
 }
 
 int			checker(char **str, int i, char op)
@@ -100,8 +98,7 @@ int			checker(char **str, int i, char op)
 	a->next = 0;
 	a = b;
 	b = 0;
-	if (firstcheck(a))
-		err();
+	firstcheck(a);
 	if (!op)
 	{
 		parser1(&a, &b);
