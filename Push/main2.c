@@ -14,12 +14,9 @@
 
 int		main(int argc, char **argv)
 {
-	int		i;
-
-	i = 0;
 	if (argc < 2)
 		err();
 	valider1(&argv[1]);
-	i = checker(&argv[1], 0, 1);
+	checker(&argv[1], 0, 1);
 	return (0);
 }
