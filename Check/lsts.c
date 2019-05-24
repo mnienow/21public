@@ -59,6 +59,25 @@ void	err(void)
 	exit(0);
 }
 
+void	sorta(t_lst **a, t_lst **b, int len)
+{
+	(void)len;
+	if ((*a)->val > (*a)->next->val)
+	{
+		if ((*a)->val < (*a)->next->next->val)
+			swap(a, 'a', b);
+		else
+			rotate(a, 'a', b);
+		if ((*a)->val > (*a)->next->val)
+			swap(a, 'a', b);
+	}
+	else
+	{
+		if ((*a)->val > (*a)->next->next->val)
+			rrotate(a, 'a', b);
+	}
+}
+
 void	parser2(t_lst **a, t_lst **b, int len)
 {
 	t_lst	**sa;
@@ -75,7 +94,7 @@ void	parser2(t_lst **a, t_lst **b, int len)
 		{
 			pivot = findmed2(a, len);
 			printf("pivot = %d\n", pivot);
-			if ((*a)->val <= pivot)
+			if ((*a)->val < pivot)
 			{
 				if ((*a)->next->val <= pivot && (*a)->next->val < (*a)->val)
 					swap(a, 'a', b);
@@ -90,8 +109,13 @@ void	parser2(t_lst **a, t_lst **b, int len)
 				if ((*b)->next)
 					if ((*b)->val < (*b)->next->val)
 						swap(b, 'b', a);
+			printf("Len = %d\n", len);
 		}
+		// sortb(b, a, len);
 		parser2(a, b, len);
 		break ;
 	}
+	sorta(a, b, len);
+	printlst(*a, 'a');
+	printlst(*b, 'b');
 }
