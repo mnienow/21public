@@ -24,19 +24,17 @@ typedef struct		s_lst
 	struct s_lst	*next;
 }					t_lst;
 
+void				err(void);
+int					checker(char **str, int i, char op);
+void				valider1(char **str);
+long				ft_atol(const char *str);
 t_lst				*lstnew(long val);
+void				lstdelone(t_lst **alst);
 void				printlst(t_lst *begin, char lst);
 void				swap(t_lst **lst, char ch, t_lst **sec);
 void				push(t_lst **from, char ch, t_lst **to);
 void				rotate(t_lst **lst, char ch, t_lst **sec);
 void				rrotate(t_lst **lst, char ch, t_lst **sec);
-void				lstdelone(t_lst **alst);
-void				err(void);
-int					checker(char **str, int i, char op);
-void				valider1(char **str);
-void				parser2(t_lst **a, t_lst **b, int len);
-int					findmed(t_lst **a);
-int					findmed2(t_lst **a, int len);
-long				ft_atol(const char *str);
+void				pushIt(t_lst **a, t_lst **b, int len);
 
 #endif

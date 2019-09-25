@@ -2,7 +2,9 @@ NAME = checker
 
 PUSH = push_swap
 
-SRCS = check.c lsts.c ops.c new.c atol.c
+COMMON = ./Common/lists.c
+
+SRCS = check.c ops.c atol.c
 
 LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
 get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
@@ -10,13 +12,13 @@ ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
 ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
 ft_memdel.c
 
-MAIN1 = main1.c
+MAIN1 = main_check.c
 
-MAIN2 = main2.c
+MAIN2 = main_push.c
 
-SRC1 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1))
+SRC1 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1)) $(COMMON)
 
-SRC2 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2))
+SRC2 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2)) $(COMMON)
 
 FLAGS = -Wall -Wextra -Werror
 

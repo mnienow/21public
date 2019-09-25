@@ -29,7 +29,7 @@ int			finalcheck(t_lst *a, t_lst *b)
 	return (-1);
 }
 
-static void	parser1(t_lst **a, t_lst **b)
+static void	parser(t_lst **a, t_lst **b)
 {
 	char	*line;
 
@@ -57,7 +57,7 @@ static void	parser1(t_lst **a, t_lst **b)
 	}
 }
 
-void		firstcheck(t_lst *a)
+void		valider2(t_lst *a)
 {
 	t_lst	*b;
 	int		val;
@@ -82,7 +82,7 @@ void		firstcheck(t_lst *a)
 	}
 }
 
-int			checker(char **str, int i, char op)
+int			checker(char **str, int i, char push)
 {
 	t_lst	*a;
 	t_lst	*b;
@@ -98,15 +98,15 @@ int			checker(char **str, int i, char op)
 	a->next = 0;
 	a = b;
 	b = 0;
-	firstcheck(a);
-	if (!op)
+	valider2(a);
+	if (!push)
 	{
-		parser1(&a, &b);
+		parser(&a, &b);
 		if (finalcheck(a, b))
 			return (-2);
 	}
 	else
-		parser2(&a, &b, i);
+		pushIt(&a, &b, i);
 	return (0);
 }
 
