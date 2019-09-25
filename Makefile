@@ -2,7 +2,7 @@ NAME = checker
 
 PUSH = push_swap
 
-COMMON = ./Common/lists.c
+COMMON = lists.c
 
 SRCS = check.c ops.c atol.c
 
@@ -16,9 +16,9 @@ MAIN1 = main_check.c
 
 MAIN2 = main_push.c
 
-SRC1 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1)) $(COMMON)
+SRC1 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1)) $(addprefix $(COM), $(COMMON))
 
-SRC2 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2)) $(COMMON)
+SRC2 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2)) $(addprefix $(COM), $(COMMON))
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -28,9 +28,11 @@ OUT2 = ./Push/
 
 OUT = ./libft/
 
-OUTPUT1 = $(SRCS:.c=.o) $(MAIN1:.c=.o) $(LIB:.c=.o)
+COM = ./Comm/
 
-OUTPUT2 = $(SRCS:.c=.o) $(MAIN2:.c=.o) $(LIB:.c=.o)
+OUTPUT1 = $(SRCS:.c=.o) $(COMMON:.c=.o) $(MAIN1:.c=.o) $(LIB:.c=.o)
+
+OUTPUT2 = $(SRCS:.c=.o) $(COMMON:.c=.o) $(MAIN2:.c=.o) $(LIB:.c=.o)
 
 all: $(NAME)
 
