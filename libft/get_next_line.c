@@ -3,121 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstannis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/26 20:37:49 by sstannis          #+#    #+#             */
-/*   Updated: 2018/12/26 20:40:53 by sstannis         ###   ########.fr       */
+/*   Created: 2018/12/17 19:31:00 by mnienow           #+#    #+#             */
+/*   Updated: 2018/12/18 20:20:58 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "./libft.h"
 
-static int			ft_end_line(int i, char *buf, char **line, t_list **tmp)
+int	wtfstrings(const int fd, char **line, char **mbuf, int ret)
 {
-	char			*buffer;
-	char			*save;
-
-	buffer = ft_strsub(buf, 0, i);
-	save = (*tmp)->content;
-	((*tmp)->content) = ft_strjoin((*tmp)->content, buffer);
-	free(save);
-	free(buffer);
-	*line = ft_strdup((*tmp)->content);
-	free((*tmp)->content);
-	buffer = ft_strsub(buf, i + 1, (ft_strlen(buf) - (i + 1)));
-	(*tmp)->content = ft_strdup(buffer);
-	free(buffer);
-	return (1);
+	if (mbuf[fd][0] && !ret)
+	{
+		CHN(*line = ft_strdup(mbuf[fd]));
+		free(mbuf[fd]);
+		mbuf[fd] = NULL;
+		return (1);
+	}
+	return (0);
 }
 
-static int			ft_check_buf(t_list **tmp, char **line)
+int	nextbuf(const int fd, char **line, char **mbuf)
 {
-	char			*buf;
-	int				i;
+	size_t	i;
+	char	*tmp;
 
 	i = 0;
-	buf = ft_strdup((*tmp)->content);
-	free((*tmp)->content);
-	(*tmp)->content = NULL;
-	while (buf[i])
+	tmp = NULL;
+	while (mbuf[fd][i])
 	{
-		if (buf[i] == '\n')
+		if (mbuf[fd][i] == '\n')
 		{
-			*line = ft_strsub(buf, 0, i);
-			(*tmp)->content = ft_strsub(buf, i + 1, (ft_strlen(buf) - (i + 1)));
-			free(buf);
+			mbuf[fd][i] = '\0';
+			CHN(*line = ft_strdup(mbuf[fd]));
+			tmp = mbuf[fd];
+			CHN(mbuf[fd] = ft_strdup(&mbuf[fd][++i]));
+			free(tmp);
 			return (1);
 		}
 		i++;
 	}
-	(*tmp)->content = ft_strdup(buf);
-	free(buf);
 	return (0);
 }
 
-static int			ft_last_string(char **line, t_list **tmp)
+int	readnext(const int fd, char **line, char **mbuf, char *tmp)
 {
-	*line = ft_strdup((*tmp)->content);
-	free((*tmp)->content);
-	(*tmp)->content = NULL;
-	return (1);
-}
+	int		ret;
+	char	buf[BUFF_SIZE + 1];
 
-static	int			ft_get_read(int fd, char *buf, char **line, t_list **tmp)
-{
-	int				i;
-
-	i = 0;
-	if ((*tmp)->content && ((i = ft_check_buf(tmp, line) == 1 || i == -1)))
-		return (i);
-	ft_bzero(buf, BUFF_SIZE + 1);
-	while ((i = read(fd, buf, BUFF_SIZE)))
+	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
-		CHECK(i);
-		buf[i] = '\0';
-		i = -1;
-		while (buf[++i] != '\0')
+		CHN(ret > 0);
+		buf[ret] = '\0';
+		if (!ft_strchr(buf, '\n'))
 		{
-			if (buf[i] == '\n')
-				return (ft_end_line(i, buf, line, tmp));
+			tmp = mbuf[fd];
+			CHN(mbuf[fd] = ft_strjoin(mbuf[fd], buf));
+			free(tmp);
 		}
-		*line = (*tmp)->content;
-		if (!((*tmp)->content = ft_strjoin((*tmp)->content, buf)))
-			return (-1);
-		free(*line);
+		else
+		{
+			ft_strchr(buf, '\n')[0] = '\0';
+			CHN(*line = ft_strjoin(mbuf[fd], buf));
+			free(mbuf[fd]);
+			CHN(mbuf[fd] = ft_strdup((char*)buf + ft_strlen(buf) + 1));
+			return (1);
+		}
 	}
-	if ((*tmp)->content && !(ft_strcmp((*tmp)->content, "") == 0))
-		return (ft_last_string(line, tmp));
-	*line = ft_strnew(0);
-	return (0);
+	R(wtfstrings(fd, line, mbuf, ret));
 }
 
-int					get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static t_list	*list;
-	t_list			*tmp;
-	int				out;
-	char			*buf;
+	static char	**mbuf;
+	char		*tmp;
 
-	if (fd < 0 || !(line))
+	tmp = NULL;
+	CH(!line || fd < 0 || fd > 10400);
+	if (!mbuf)
+		CHN(mbuf = (char**)malloc(sizeof(char*) * 10400));
+	if (!mbuf[fd])
+		CHN(mbuf[fd] = ft_strnew(0));
+	if (nextbuf(fd, line, mbuf) > 0 ||
+			readnext(fd, line, mbuf, tmp) > 0)
+		return (1);
+	if (nextbuf(fd, line, mbuf) < 0 || readnext(fd, line, mbuf, tmp) < 0)
 		return (-1);
-	CHECKMALL(buf = (char *)(malloc(sizeof(char) * (BUFF_SIZE + 1))));
-	tmp = list;
-	while (list)
-	{
-		if ((int)list->content_size == fd)
-			break ;
-		list = list->next;
-	}
-	if (list == NULL)
-	{
-		list = ft_lstnew("\0", 1);
-		list->content_size = fd;
-		ft_lstadd(&tmp, list);
-	}
-	out = ft_get_read(fd, buf, line, &list);
-	list = tmp;
-	free(buf);
-	return (out);
+	CHN(*line = ft_strnew(0));
+	return (0);
 }

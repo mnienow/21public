@@ -25,7 +25,9 @@ typedef struct		s_lst
 }					t_lst;
 
 void				err(void);
-int   				checker(long *longs, int i, char push);
+t_lst				*set_stack_a(long *longs);
+void				parser(t_lst **a, t_lst **b);
+int					finalcheck(t_lst *a, t_lst *b);
 long 				*valider(char **str);
 long				ft_atol(const char *str);
 t_lst				*lstnew(long val);

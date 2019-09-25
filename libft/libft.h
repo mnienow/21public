@@ -20,8 +20,9 @@
 # if (BUFF_SIZE <= 0)
 #  error BUFF_SIZE cannot be <=0
 # endif
-# define CHECK(x) if (x < 0) return (-1)
-# define CHECKMALL(x) if ((x) == NULL) return (-1)
+# define CHN(y) if ((y) == 0) return (-1)
+# define CH(x) if ((x) != 0) return (-1)
+# define R(z) return (z)
 
 typedef struct			s_list
 {
@@ -29,6 +30,7 @@ typedef struct			s_list
 	size_t				content_size;
 	struct s_list		*next;
 }						t_list;
+
 size_t					ft_strlen(const char *str);
 void					*ft_memset(void *b, int c, size_t len);
 void					ft_bzero(void *s, size_t n);

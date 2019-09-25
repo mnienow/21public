@@ -18,27 +18,26 @@ void	err(void)
 	exit(0);
 }
 
-void	pushIt(t_lst **a, t_lst **b, int len)
-{
-	(void)a;
-	(void)b;
-	(void)len;
-}
-
 int			main(int argc, char **argv)
 {
 	long	*longs;
-	int		i;
+	t_lst	*a;
+	t_lst	*b;
 
-	i = 0;
 	if (argc > 1)
 	{
 		longs = valider(&argv[0]);
-		i = checker(longs, 0, 0);
-		if (i)
-			write(1, "KO\n", 4);
+		a = set_stack_a(longs);
+		b = 0;
+		parser(&a, &b);
+		if (finalcheck(a, b))
+			write(1, "KO\n", 3);
 		else
-			write(1, "OK\n", 4);
+			write(1, "OK\n", 3);
+	}
+	else
+	{
+		write(1, "Error\n", 6);
 	}
 	return (0);
 }

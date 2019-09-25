@@ -26,10 +26,10 @@ int			finalcheck(t_lst *a, t_lst *b)
 		if (!a->next)
 			return (0);
 	}
-	return (-1);
+	return (1);
 }
 
-static void	parser(t_lst **a, t_lst **b)
+void	parser(t_lst **a, t_lst **b)
 {
 	char	*line;
 
@@ -52,16 +52,18 @@ static void	parser(t_lst **a, t_lst **b)
 			rrotate(a, 'a', b);
 		else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 			rrotate(b, 'b', a);
-		// else
-			// err();
+		else
+			err();
 	}
 }
 
-int			checker(long *longs, int i, char push)
+t_lst	*set_stack_a(long *longs)
 {
 	t_lst	*a;
 	t_lst	*b;
+	size_t	i;
 
+	i = 0;
 	a = (t_lst *)malloc(sizeof(t_lst));
 	a->val = (int)longs[i++];
 	b = a;
@@ -73,13 +75,5 @@ int			checker(long *longs, int i, char push)
 	a->next = 0;
 	a = b;
 	b = 0;
-	if (!push)
-	{
-		parser(&a, &b);
-		if (finalcheck(a, b))
-			return (-2);
-	}
-	else
-		pushIt(&a, &b, i);
-	return (0);
+	return (a);
 }
