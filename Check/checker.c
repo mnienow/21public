@@ -52,11 +52,10 @@ static void	parser(t_lst **a, t_lst **b)
 			rrotate(a, 'a', b);
 		else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 			rrotate(b, 'b', a);
-		else
-			err();
+		// else
+			// err();
 	}
 }
-
 
 int			checker(long *longs, int i, char push)
 {

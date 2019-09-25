@@ -26,7 +26,7 @@ typedef struct		s_lst
 
 void				err(void);
 int   				checker(long *longs, int i, char push);
-long 				*valider(char **str)
+long 				*valider(char **str);
 long				ft_atol(const char *str);
 t_lst				*lstnew(long val);
 void				lstdelone(t_lst **alst);

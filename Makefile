@@ -12,7 +12,7 @@ LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
 get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
 ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
 ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
-ft_memdel.c ft_isnumber.c
+ft_memdel.c ft_arrlen.c ft_isnumber.c ft_isdigit.c
 
 MAIN1 = main_check.c
 
@@ -32,9 +32,9 @@ OUT = ./libft/
 
 COM = ./Comm/
 
-OUTPUT1 = $(SRCS:.c=.o) $(COMMON:.c=.o) $(MAIN1:.c=.o) $(LIB:.c=.o)
+OUTPUT1 = $(SRCS1:.c=.o) $(COMMON:.c=.o) $(MAIN1:.c=.o) $(LIB:.c=.o)
 
-OUTPUT2 = $(SRCS:.c=.o) $(COMMON:.c=.o) $(MAIN2:.c=.o) $(LIB:.c=.o)
+OUTPUT2 = $(SRCS2:.c=.o) $(COMMON:.c=.o) $(MAIN2:.c=.o) $(LIB:.c=.o)
 
 all: $(NAME)
 

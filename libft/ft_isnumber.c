@@ -19,7 +19,7 @@ int     ft_isnumber(char *str)
     i = 0;
     while (str[i])
     {
-        if (!is_digit(str[i++]))
+        if (!ft_isdigit(str[i++]))
             return (0);
     }
     return (1);

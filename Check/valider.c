@@ -33,16 +33,16 @@ void		check_input_dups(char **str)
 	}
 }
 
-int			*get_longs(char **str)
+long		*get_longs(char **str)
 {
 	long	*longs;
 	size_t	i;
 
 	i = 0;
 	longs = (long*)malloc(sizeof(long) * ft_arrlen(str));
-	while (str[i])
+	while (str[++i])
 	{
-		longs[i] = ft_atol(str[i++]);
+		longs[i - 1] = ft_atol(str[i]);
 	}
 	return (longs);
 }

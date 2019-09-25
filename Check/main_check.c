@@ -27,13 +27,14 @@ void	pushIt(t_lst **a, t_lst **b, int len)
 
 int			main(int argc, char **argv)
 {
+	long	*longs;
 	int		i;
 
 	i = 0;
 	if (argc > 1)
 	{
-		valider(&argv[0]);
-		i = checker(&argv[1], 0, 0);
+		longs = valider(&argv[0]);
+		i = checker(longs, 0, 0);
 		if (i)
 			write(1, "KO\n", 4);
 		else
