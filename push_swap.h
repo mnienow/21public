@@ -20,13 +20,13 @@
 
 typedef struct		s_lst
 {
-	long				val;
+	int				val;
 	struct s_lst	*next;
 }					t_lst;
 
 void				err(void);
-int					checker(char **str, int i, char op);
-void				valider1(char **str);
+int   				checker(long *longs, int i, char push);
+long 				*valider(char **str)
 long				ft_atol(const char *str);
 t_lst				*lstnew(long val);
 void				lstdelone(t_lst **alst);
@@ -36,5 +36,7 @@ void				push(t_lst **from, char ch, t_lst **to);
 void				rotate(t_lst **lst, char ch, t_lst **sec);
 void				rrotate(t_lst **lst, char ch, t_lst **sec);
 void				pushIt(t_lst **a, t_lst **b, int len);
+int					findmed2(t_lst **list, int len);
+void				sorta(t_lst **a, t_lst **b);
 
 #endif

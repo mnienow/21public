@@ -32,7 +32,7 @@ int			main(int argc, char **argv)
 	i = 0;
 	if (argc > 1)
 	{
-		valider1(&argv[1]);
+		valider(&argv[0]);
 		i = checker(&argv[1], 0, 0);
 		if (i)
 			write(1, "KO\n", 4);

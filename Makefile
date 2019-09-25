@@ -4,21 +4,23 @@ PUSH = push_swap
 
 COMMON = lists.c
 
-SRCS = check.c ops.c atol.c
+SRCS1 = atol.c checker.c ops.c valider.c
+
+SRCS2 = push.c sort.c new.c
 
 LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
 get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
 ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
 ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
-ft_memdel.c
+ft_memdel.c ft_isnumber.c
 
 MAIN1 = main_check.c
 
 MAIN2 = main_push.c
 
-SRC1 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1)) $(addprefix $(COM), $(COMMON))
+SRC1 = $(addprefix $(OUT1), $(SRCS1)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1)) $(addprefix $(COM), $(COMMON))
 
-SRC2 = $(addprefix $(OUT1), $(SRCS)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2)) $(addprefix $(COM), $(COMMON))
+SRC2 = $(addprefix $(OUT2), $(SRCS2)) $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2)) $(addprefix $(COM), $(COMMON))
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -49,6 +51,7 @@ push:
 clean:
 	make -C ./libft clean
 	/bin/rm -f $(OUTPUT1) rm -f ft_printf.h.gch
+	/bin/rm -f $(OUTPUT2)
 
 fclean: clean
 	make -C ./libft fclean

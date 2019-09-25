@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 21:47:45 by mnienow           #+#    #+#             */
-/*   Updated: 2019/04/03 21:47:50 by mnienow          ###   ########.fr       */
+/*   Created: 2019/03/30 18:27:32 by mnienow           #+#    #+#             */
+/*   Updated: 2019/03/30 18:27:33 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	err(void)
+size_t	ft_arrlen(char **str)
 {
-	write(1, "Error\n", 6);
-	exit(0);
-}
+	size_t	len;
 
-void	pushIt(t_lst **a, t_lst **b, int len)
-{
-	(void)a;
-	(void)b;
-	(void)len;
-}
-
-int			main(int argc, char **argv)
-{
-	int		i;
-
-	i = 0;
-	if (argc > 1)
+	len = 0;
+	while (str[len])
 	{
-		valider(&argv[0]);
-		i = checker(&argv[1], 0, 0);
-		if (i)
-			write(1, "KO\n", 4);
-		else
-			write(1, "OK\n", 4);
+		len++;
 	}
-	return (0);
+	return len;
 }

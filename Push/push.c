@@ -46,7 +46,7 @@ void	pushIt(t_lst **a, t_lst **b, int len)
 			printf("Len = %d\n", len);
 		}
 		// sortb(b, a);
-		parser2(a, b, len);
+		pushIt(a, b, len);
 		break ;
 	}
 	sorta(a, b);

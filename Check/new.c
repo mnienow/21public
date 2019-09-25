@@ -97,7 +97,7 @@ int		findmed2(t_lst **list, int len)
 	// return (findercycle(link, len, 0, 1));
 }
 
-int	get_median(t_stack *a)
+/*int	get_median(t_stack *a)
 {
 	t_pslst	*tmp;
 	int		arr[a->ac + 1];
@@ -124,4 +124,4 @@ int	get_median(t_stack *a)
 			}
 	}
 	return (arr[i / 2]);
-}
+}*/

@@ -99,5 +99,7 @@ char					*ft_strupcase(char *str);
 size_t					ft_sqrt(size_t nb);
 size_t					*ft_range(size_t min, size_t max);
 int						get_next_line(const int fd, char **line);
+size_t					ft_arrlen(char **str);
+int     				ft_isnumber(char *str);
 
 #endif
