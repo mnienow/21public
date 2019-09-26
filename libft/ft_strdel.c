@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstannis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 11:05:04 by sstannis          #+#    #+#             */
-/*   Updated: 2018/12/06 11:05:06 by sstannis         ###   ########.fr       */
+/*   Created: 2018/12/02 21:48:56 by mnienow           #+#    #+#             */
+/*   Updated: 2018/12/06 19:04:34 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 void	ft_strdel(char **as)

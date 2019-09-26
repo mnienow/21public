@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstannis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 00:44:13 by sstannis          #+#    #+#             */
-/*   Updated: 2018/12/02 00:53:53 by sstannis         ###   ########.fr       */
+/*   Created: 2018/12/02 14:10:41 by mnienow           #+#    #+#             */
+/*   Updated: 2018/12/02 15:14:39 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,28 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
+	size_t i;
+	size_t j;
 
-	if (*(char *)needle == '\0')
-		return ((char *)haystack);
-	i = ft_strlen(needle);
-	while (*haystack && len >= i)
+	i = 0;
+	j = 0;
+	if (!ft_strlen(needle))
+		return ((char*)haystack);
+	while (haystack[j + i])
 	{
-		if (ft_strncmp(haystack, needle, i) == 0)
+		while (haystack[j + i] != needle[i] &&
+				haystack[j + i] && needle[i] && j + i < len)
+			j++;
+		while (haystack[j + i] == needle[i] &&
+				haystack[j + i] && needle[i] && j + i < len)
+			i++;
+		if (i != ft_strlen(needle) && haystack[j])
 		{
-			return ((char *)haystack);
+			i = 0;
+			j++;
 		}
-		haystack++;
-		len--;
+		if (i == ft_strlen(needle))
+			return ((char*)haystack + j);
 	}
 	return (NULL);
 }

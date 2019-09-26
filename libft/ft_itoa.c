@@ -3,54 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstannis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 17:15:00 by sstannis          #+#    #+#             */
-/*   Updated: 2018/12/06 17:15:01 by sstannis         ###   ########.fr       */
+/*   Created: 2018/12/05 17:16:19 by mnienow           #+#    #+#             */
+/*   Updated: 2018/12/12 19:53:05 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-static size_t	ftcount(int n)
+char		*ft_itoa(int n)
 {
-	size_t i;
+	char	*res;
+	int		count;
+	long	nb;
 
-	i = 0;
-	if (n <= 0)
-		i++;
-	while (n)
+	count = n < 0 ? 2 : 1;
+	nb = n < 0 ? -(long)n : (long)n;
+	while (nb /= 10)
+		count++;
+	nb = n < 0 ? -(long)n : (long)n;
+	if (!(res = (char *)malloc(count + 1)))
+		return (0);
+	res[count] = 0;
+	while (--count > -1)
 	{
-		n = n / 10;
-		i++;
+		res[count] = (nb % 10) + 48;
+		nb /= 10;
 	}
-	return (i);
-}
-
-char			*ft_itoa(int n)
-{
-	size_t	i;
-	size_t	l;
-	char	*str;
-
-	l = 0;
-	i = ftcount(n);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	if (n < 0)
-	{
-		str[0] = '-';
-		l = 1;
-		n = -n;
-	}
-	str[i] = '\0';
-	while (i > l)
-	{
-		str[i - 1] = (n % 10) + 48;
-		n = n / 10;
-		i--;
-	}
-	return (str);
+	n < 0 ? res[0] = '-' : 0;
+	return (res);
 }

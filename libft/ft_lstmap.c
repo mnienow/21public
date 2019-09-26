@@ -3,40 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstannis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/10 17:34:11 by sstannis          #+#    #+#             */
-/*   Updated: 2018/12/10 17:34:12 by sstannis         ###   ########.fr       */
+/*   Created: 2018/12/06 22:29:34 by mnienow           #+#    #+#             */
+/*   Updated: 2018/12/12 19:38:13 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+static void	*mbfree(void *cont, size_t size)
 {
-	t_list	*temp;
-	t_list	*out;
-	t_list	*del;
+	(void)size;
+	size = 0;
+	free(cont);
+	return (0);
+}
 
-	if (lst == NULL || f == NULL)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list *lst2;
+	t_list *lst3;
+
+	if (!lst && !f)
 		return (NULL);
-	temp = f(lst);
-	out = temp;
-	del = lst;
+	lst2 = f(lst);
+	lst3 = lst2;
 	while (lst->next)
 	{
 		lst = lst->next;
-		if (!(temp->next = f(lst)))
+		if (!(lst2->next = f(lst)))
 		{
-			while (del)
-			{
-				out = del->next;
-				free(del);
-				del = out;
-			}
+			ft_lstdel(&lst3, mbfree(lst3->content, lst3->content_size));
 			return (NULL);
 		}
-		temp = temp->next;
+		lst2 = lst2->next;
 	}
-	return (out);
+	return (lst3);
 }

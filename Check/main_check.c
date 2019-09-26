@@ -12,12 +12,6 @@
 
 #include "../push_swap.h"
 
-void	err(void)
-{
-	write(1, "Error\n", 6);
-	exit(0);
-}
-
 int			main(int argc, char **argv)
 {
 	long	*longs;
@@ -36,8 +30,6 @@ int			main(int argc, char **argv)
 			write(1, "OK\n", 3);
 	}
 	else
-	{
 		write(1, "Error\n", 6);
-	}
 	return (0);
 }

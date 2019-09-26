@@ -12,14 +12,12 @@
 
 #include "libft.h"
 
-size_t	ft_arrlen(char **str)
+size_t	ft_arrlen(void **arr)
 {
 	size_t	len;
 
 	len = 0;
-	while (str[len])
-	{
+	while (arr[len])
 		len++;
-	}
 	return len;
 }

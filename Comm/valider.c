@@ -12,6 +12,12 @@
 
 #include "../push_swap.h"
 
+void		err(void)
+{
+	write(1, "Error\n", 6);
+	exit(0);
+}
+
 void		check_input_dups(char **str)
 {
 	size_t	i;
@@ -39,11 +45,9 @@ long		*get_longs(char **str)
 	size_t	i;
 
 	i = 0;
-	longs = (long*)malloc(sizeof(long) * ft_arrlen(str));
+	longs = (long*)malloc(sizeof(long) * ft_arrlen((void**)str));
 	while (str[++i])
-	{
 		longs[i - 1] = ft_atol(str[i]);
-	}
 	return (longs);
 }
 

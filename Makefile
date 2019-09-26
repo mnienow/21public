@@ -2,9 +2,9 @@ NAME = checker
 
 PUSH = push_swap
 
-COMMON = lists.c
+COMMON = lists.c valider.c ops.c atol.c
 
-SRCS1 = atol.c checker.c ops.c valider.c
+SRCS1 = checker.c 
 
 SRCS2 = push.c sort.c new.c
 

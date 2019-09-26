@@ -56,24 +56,3 @@ void	parser(t_lst **a, t_lst **b)
 			err();
 	}
 }
-
-t_lst	*set_stack_a(long *longs)
-{
-	t_lst	*a;
-	t_lst	*b;
-	size_t	i;
-
-	i = 0;
-	a = (t_lst *)malloc(sizeof(t_lst));
-	a->val = (int)longs[i++];
-	b = a;
-	while (longs[i])
-	{
-		a->next = lstnew((int)longs[i++]);
-		a = a->next;
-	}
-	a->next = 0;
-	a = b;
-	b = 0;
-	return (a);
-}

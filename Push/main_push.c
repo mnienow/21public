@@ -14,9 +14,18 @@
 
 int		main(int argc, char **argv)
 {
-	if (argc < 2)
-		err();
-	valider1(&argv[1]);
-	checker(&argv[1], 0, 1);
+	long	*longs;
+	t_lst	*a;
+	t_lst	*b;
+
+	if (argc > 1)
+	{
+		longs = valider(&argv[0]);
+		a = set_stack_a(longs);
+		b = 0;
+		pushIt(&a, &b, ft_arrlen((void**)&longs));
+	}
+	else
+		write(1, "Error\n", 6);
 	return (0);
 }
