@@ -14,14 +14,14 @@
 
 int			main(int argc, char **argv)
 {
-	long	*longs;
 	t_lst	*a;
 	t_lst	*b;
+	size_t	len;
 
 	if (argc > 1)
 	{
-		longs = valider(&argv[0]);
-		a = set_stack_a(longs);
+		len = ft_arrlen((void**)argv) - 1;
+		a = valider(argv, len);
 		b = 0;
 		parser(&a, &b);
 		if (finalcheck(a, b))

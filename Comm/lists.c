@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-t_lst	*lstnew(long val)
+t_lst	*lstnew(int val)
 {
 	t_lst	*arr;
 

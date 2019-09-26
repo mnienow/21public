@@ -25,12 +25,12 @@ typedef struct		s_lst
 }					t_lst;
 
 void				err(void);
-t_lst				*set_stack_a(long *longs);
+t_lst				*set_stack_a(long *longs, size_t len);
 void				parser(t_lst **a, t_lst **b);
 int					finalcheck(t_lst *a, t_lst *b);
-long 				*valider(char **str);
+t_lst 				*valider(char **str, size_t len);
 long				ft_atol(const char *str);
-t_lst				*lstnew(long val);
+t_lst				*lstnew(int val);
 void				lstdelone(t_lst **alst);
 void				printlst(t_lst *begin, char lst);
 void				swap(t_lst **lst, char ch, t_lst **sec);

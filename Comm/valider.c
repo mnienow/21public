@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 void		err(void)
 {
@@ -39,38 +40,33 @@ void		check_input_dups(char **str)
 	}
 }
 
-long		*get_longs(char **str)
+long		*get_longs(char **str, size_t len)
 {
 	long	*longs;
-	size_t	i;
 
-	i = 0;
-	longs = (long*)malloc(sizeof(long) * ft_arrlen((void**)str));
-	while (str[++i])
-		longs[i - 1] = ft_atol(str[i]);
+	longs = (long*)malloc(sizeof(long) * len);
+	while (len)
+	{
+		longs[len - 1] = ft_atol(str[len]);
+		len--;
+	}
 	return (longs);
 }
 
-void		check_longs(long *longs)
+void		check_longs(long *longs, size_t len)
 {
-	size_t	i;
-
-	i = 0;
-	while (longs[i])
-	{
-		if (longs[i] > 2147483647 || longs[i] < -2147483648)
+	while (len--)
+		if (longs[len] > 2147483647 || longs[len] < -2147483648)
 			err();
-		i++;
-	}
 }
 
-long 		*valider(char **str)
+t_lst 		*valider(char **str, size_t len)
 {
 	long	*longs;
 
 	(void)str;
 	check_input_dups(str);
-	longs = get_longs(str);
-	check_longs(longs);
-	return (longs);
+	longs = get_longs(str, len);
+	check_longs(longs, len);
+	return (set_stack_a(longs, len));
 }

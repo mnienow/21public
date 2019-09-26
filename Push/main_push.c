@@ -14,16 +14,16 @@
 
 int		main(int argc, char **argv)
 {
-	long	*longs;
 	t_lst	*a;
 	t_lst	*b;
+	size_t	len;
 
 	if (argc > 1)
 	{
-		longs = valider(&argv[0]);
-		a = set_stack_a(longs);
+		len = ft_arrlen((void**)argv) - 1;
+		a = valider(argv, len);
 		b = 0;
-		pushIt(&a, &b, ft_arrlen((void**)&longs));
+		pushIt(&a, &b, len);
 	}
 	else
 		write(1, "Error\n", 6);
