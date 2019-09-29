@@ -122,19 +122,13 @@ void	rrotate(t_lst **lst, char ch, t_lst **sec)
 t_lst	*set_stack_a(long *longs, size_t len)
 {
 	t_lst	*a;
-	t_lst	*b;
-	size_t	i;
 
-	i = 0;
-	a = lstnew((int)longs[i++]);
-	b = a;
-	while (i < len)
+	a = lstnew((int)longs[--len]);
+	while (len)
 	{
-		a->next = lstnew((int)longs[i++]);
-		a = a->next;
+		a->prev = lstnew((int)longs[--len]);
+		a->prev->next = a;
+		a = a->prev;
 	}
-	a->next = 0;
-	a = b;
-	b = 0;
 	return (a);
 }

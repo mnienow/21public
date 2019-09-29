@@ -16,43 +16,37 @@ int			finalcheck(t_lst *a, t_lst *b)
 {
 	if (!b && a)
 	{
-		while (a->next)
+		while (a->end)
 		{
 			if (a->val < a->next->val)
 				a = a->next;
 			else
 				break ;
 		}
-		if (!a->next)
+		if (!a->end)
 			return (0);
 	}
 	return (1);
 }
 
-void	parser(t_lst **a, t_lst **b)
+int			main(int argc, char **argv)
 {
-	char	*line;
+	t_lst	*a;
+	t_lst	*b;
+	size_t	len;
 
-	line = 0;
-	while (get_next_line(0, &line))
+	if (argc > 1)
 	{
-		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "ss"))
-			swap(a, 'a', b);
-		else if (!ft_strcmp(line, "sb") || !ft_strcmp(line, "ss"))
-			swap(b, 'b', a);
-		else if (!ft_strcmp(line, "pa"))
-			push(b, 'a', a);
-		else if (!ft_strcmp(line, "pb"))
-			push(a, 'b', b);
-		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rr"))
-			rotate(a, 'a', b);
-		else if (!ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
-			rotate(b, 'b', a);
-		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrr"))
-			rrotate(a, 'a', b);
-		else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
-			rrotate(b, 'b', a);
+		len = ft_arrlen((void**)argv) - 1;
+		a = valider(argv, len);
+		b = 0;
+		parser(&a, &b);
+		if (finalcheck(a, b))
+			write(1, "KO\n", 3);
 		else
-			err();
+			write(1, "OK\n", 3);
 	}
+	else
+		write(1, "Error\n", 6);
+	return (0);
 }

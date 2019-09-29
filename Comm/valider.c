@@ -33,10 +33,8 @@ void		check_input_dups(char **str)
 		string = str[i];
 		j = i;
 		while (str[++j])
-		{
-			if (str[j] == string)
+			if (!ft_strcmp(str[j], string))
 				err();
-		}
 	}
 }
 

@@ -20,27 +20,26 @@ t_lst	*lstnew(int val)
 		return (NULL);
 	arr->val = val;
 	arr->next = NULL;
+	arr->prev = NULL;
 	return (arr);
 }
 
 void	printlst(t_lst *begin, char lst)
 {
-	t_lst	*start;
 	char	*val;
 
 	val = 0;
-	start = begin;
 	if (begin)
 	{
 		write(1, "stack ", 6);
 		write(1, &lst, 1);
 		write(1, "\n", 1);
-		while (start)
+		while (begin)
 		{
-			val = ft_itoa(start->val);
+			val = ft_itoa(begin->val);
 			write(1, val, ft_strlen(val));
 			write(1, "\n", 1);
-			start = start->next;
+			begin = begin->next;
 			free(val);
 			val = 0;
 		}

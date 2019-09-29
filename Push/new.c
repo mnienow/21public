@@ -12,116 +12,70 @@
 
 #include "../push_swap.h"
 
-int		findmed(t_lst **list)
+size_t		lstlen(t_lst *list)
 {
-	t_lst	*link;
-	int		count;
-	int		min;
-	int		max;
-	int		val;
+	size_t	len;
 
-	min = 0;
-	max = 0;
-	count = 0;
-	link = *list;
-	while (link)
-	{
-		link->val < min ? min = link->val : 0;
-		link->val > max ? max = link->val : 0;
-		link = link->next;
-	}
-	val = (max - min) / 2;
-	link = *list;
-	while (link)
-	{
-		if (link->val < val)
-			count++;
-		link = link->next;
-	}
-	return (count);
-}
-
-t_lst	*lstcpy(t_lst *list)
-{
-	t_lst	*copy;
-	t_lst	*link;
-
-	copy = (t_lst *)malloc(sizeof(t_lst));
-	copy->val = list->val;
-	link = copy;
+	len = 0;
 	while (list->next)
 	{
-		copy->next = lstnew(list->next->val);
 		list = list->next;
-		copy = copy->next;
+		len++;
 	}
-	return (link);
+	return (len);
 }
 
-int		findercycle(t_lst *list, int len, int count)
-// int		findercycle(t_lst *sa, int len, int val, int count)
+int			*lst_to_arr(t_lst *list, size_t len)
 {
-	int		tmp;
-	t_lst	*link;
-
-	while (list && count)
-	{
-		link = list;
-		count = len - 1;
-		while (link->next)
-		{
-			if (link->val > link->next->val)
-			{
-				tmp = link->next->val;
-				link->next->val = link->val;
-				link->val = tmp;
-			}
-			else
-				count--;
-			link = link->next;
-		}
-		// val = s->val;
-	}
-	len = len / 2 + (len % 2);
-	while (--len)
-		list = list->next;
-	return (list->val);
-}
-
-int		findmed2(t_lst **list, int len)
-{
-	t_lst	*link;
-
-	link = lstcpy(*list);
-	return (findercycle(link, len, 1));
-	// return (findercycle(link, len, 0, 1));
-}
-
-/*int	get_median(t_stack *a)
-{
-	t_pslst	*tmp;
-	int		arr[a->ac + 1];
+	int		*arr;
 	int		i;
-	int		j[2];
 
-	tmp = a->head;
+	arr = (int*)malloc(sizeof(int) * len);
 	i = 0;
-	while (tmp != a->p[a->top])
+	while (list->next)
 	{
-		arr[i++] = tmp->n;
-		tmp = tmp->nxt;
+		arr[i++] = list->val;
+		list = list->next;
 	}
-	j[0] = -1;
-	while (j[0]++ < i)
-	{
-		j[1] = j[0];
-		while (++j[1] < i)
-			if (arr[j[0]] < arr[j[1]])
-			{
-				arr[a->ac] = arr[j[1]];
-				arr[j[1]] = arr[j[0]];
-				arr[j[0]] = arr[a->ac];
-			}
-	}
-	return (arr[i / 2]);
-}*/
+	return (arr);
+}
+
+void qs(int *number, int first,int last)
+{
+   int i, j, pivot, temp;
+
+   if(first<last){
+      pivot=first;
+      i=first;
+      j=last;
+
+      while(i<j){
+         while(number[i]<=number[pivot]&&i<last)
+            i++;
+         while(number[j]>number[pivot])
+            j--;
+         if(i<j){
+            temp=number[i];
+            number[i]=number[j];
+            number[j]=temp;
+         }
+      }
+
+      temp=number[pivot];
+      number[pivot]=number[j];
+      number[j]=temp;
+      qs(number,first,j-1);
+      qs(number,j+1,last);
+   }
+}
+
+int			get_median(t_lst *list, size_t len)
+{
+	int		*ints;
+
+	ints = lst_to_arr(list, len);
+	// printf("int array created\n");
+	qs(ints, ints[0], ints[len - 1]);
+	// printf("sorted\n");
+	return (ints[len / 2]);
+}
