@@ -1,4 +1,4 @@
-NAME = checker
+CHECK = checker
 
 PUSH = push_swap
 
@@ -17,11 +17,13 @@ ft_strchr.c
 
 MAIN1 = checker.c
 
-MAIN2 = main_push.c
+MAIN2 = push_swap.c
 
-SRC1 = $(addprefix $(OUT), $(LIB)) $(addprefix $(COM), $(COMMON)) $(addprefix $(OUT1), $(MAIN1)) $(addprefix $(OUT1), $(SRCS1))
+SRC1 = $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT1), $(MAIN1)) $(addprefix $(OUT1), $(SRCS1))
 
-SRC2 = $(addprefix $(OUT), $(LIB)) $(addprefix $(COM), $(COMMON)) $(addprefix $(OUT2), $(MAIN2)) $(addprefix $(OUT2), $(SRCS2)) 
+SRC2 = $(addprefix $(OUT), $(LIB)) $(addprefix $(OUT2), $(MAIN2)) $(addprefix $(OUT2), $(SRCS2))
+
+SRCCOMM = $(addprefix $(COM), $(COMMON))
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -33,30 +35,34 @@ OUT = ./libft/
 
 COM = ./Comm/
 
-OUTPUT1 = $(COMMON:.c=.o) $(MAIN1:.c=.o) $(LIB:.c=.o) $(SRCS1:.c=.o)
+OUTPUT1 = $(MAIN1:.c=.o) $(LIB:.c=.o) $(SRCS1:.c=.o)
 
-OUTPUT2 = $(COMMON:.c=.o) $(MAIN2:.c=.o) $(LIB:.c=.o) $(SRCS2:.c=.o) 
+OUTPUT2 = $(MAIN2:.c=.o) $(LIB:.c=.o) $(SRCS2:.c=.o)
 
-all: $(NAME)
+COMMOUT = $(COMMON:.c=.o)
 
-$(NAME):
-	gcc $(FLAGS) $(SRC1) -c
-	gcc $(OUTPUT1) -o $(NAME)
-
-.PHONY: push
+all: 
+	gcc $(SRC1) $(SRC2) $(SRCCOMM) -c $(FLAGS)
+	gcc $(OUTPUT1) $(COMMOUT) -o $(CHECK) $(FLAGS)
+	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) $(FLAGS)
 
 push:
-	gcc $(FLAGS) $(SRC2) -c -std=c11 -ggdb3
-	gcc $(OUTPUT2) -o $(PUSH) -std=c11 -ggdb3 $(FLAGS) 
+	gcc $(SRC2) $(SRCCOMM) -c -std=c11 -ggdb3 $(FLAGS)
+	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) -std=c11 -ggdb3 $(FLAGS)
+
+check:
+	gcc $(SRC1) $(SRCCOMM) -c -std=c11 -ggdb3 $(FLAGS)
+	gcc $(OUTPUT1) $(COMMOUT) -o $(CHECK) -std=c11 -ggdb3 $(FLAGS)
 
 clean:
 	make -C ./libft clean
-	/bin/rm -f $(OUTPUT1) rm -f ft_printf.h.gch
+	/bin/rm -f $(OUTPUT1)
 	/bin/rm -f $(OUTPUT2)
+	/bin/rm -f $(COMMOUT)
 
 fclean: clean
 	make -C ./libft fclean
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(CHECK)
 	/bin/rm -f $(PUSH)
 
 re: fclean all

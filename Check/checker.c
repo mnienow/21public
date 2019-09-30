@@ -16,14 +16,14 @@ int			finalcheck(t_lst *a, t_lst *b)
 {
 	if (!b && a)
 	{
-		while (a->end)
+		while (a->next)
 		{
 			if (a->val < a->next->val)
 				a = a->next;
 			else
 				break ;
 		}
-		if (!a->end)
+		if (!a->next)
 			return (0);
 	}
 	return (1);

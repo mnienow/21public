@@ -14,23 +14,21 @@
 
 void	swap(t_lst **lst, char ch, t_lst **sec)
 {
-	t_lst	*new;
-	t_lst	*tmp;
+	t_lst	*link;
+	int		tmp;
 
-	if (!*lst || !(*lst)->next)
+	link = *lst;
+	tmp = 0;
+	if (!link || !link->next)
 		write(1, "\n", 1);
 	else
 	{
+		tmp = (*lst)->val;
 		write(1, "s", 1);
 		write(1, &ch, 1);
-		tmp = (t_lst *)malloc(sizeof(t_lst));
-		tmp->val = (*lst)->val;
-		tmp->next = 0;
-		new = (*lst);
-		new = new->next;
-		(*lst)->val = new->val;
-		new->val = tmp->val;
-		*lst = (*lst);
+		link = link->next;
+		(*lst)->val = link->val;
+		link->val = tmp;
 		write(1, "\n", 1);
 		ch == 'a' ? printlst(*lst, ch) : printlst(*sec, 'a');
 		ch == 'a' ? printlst(*sec, 'b') : printlst(*lst, ch);
@@ -39,9 +37,9 @@ void	swap(t_lst **lst, char ch, t_lst **sec)
 
 void	push(t_lst **from, char ch, t_lst **to)
 {
-	t_lst	*tmp;
+	t_lst	*link;
 
-	tmp = 0;
+	link = 0;
 	if (!*from)
 		write(1, "\n", 1);
 	else
@@ -52,41 +50,37 @@ void	push(t_lst **from, char ch, t_lst **to)
 			*to = lstnew((*from)->val);
 		else
 		{
-			tmp = lstnew((*from)->val);
-			tmp->next = *to;
-			*to = tmp;
+			link = lstnew((*from)->val);
+			link->next = *to;
+			*to = link;
 		}
-		tmp = *from;
+		link = *from;
 		*from = (*from)->next;
-		lstdelone(&tmp);
+		lstdelone(&link);
 		write(1, "\n", 1);
 		ch == 'b' ? printlst(*from, 'a') : printlst(*to, ch);
 		ch == 'b' ? printlst(*to, ch) : printlst(*from, 'b');
 	}
 }
 
-void	rotate(t_lst **lst, char ch, t_lst **sec)
+void		rotate(t_lst **lst, char ch, t_lst **sec)
 {
+	t_lst	*link;
 	t_lst	*last;
-	t_lst	*tmp;
 
-	tmp = *lst;
-	last = 0;
-	if (!*lst || !(*lst)->next)
+    link = (*lst);
+	if (!link || !link->next)
 		write(1, "\n", 1);
 	else
 	{
 		write(1, "r", 1);
 		write(1, &ch, 1);
-		last = lstnew((*lst)->val);
-		*lst = (*lst)->next;
-		lstdelone(&tmp);
-		tmp = (*lst);
-		while ((*lst)->next)
-			(*lst) = (*lst)->next;
-		(*lst)->next = last;
-		(*lst) = tmp;
-		write(1, "\n", 1);
+		last = lstnew(link->val);
+        link->prev->next = last;
+        last->prev = link->prev;
+        *lst = (*lst)->next;
+		lstdelone(&link);
+        (*lst)->prev = last;
 		ch == 'a' ? printlst(*lst, ch) : printlst(*sec, 'a');
 		ch == 'a' ? printlst(*sec, 'b') : printlst(*lst, ch);
 	}
@@ -95,23 +89,20 @@ void	rotate(t_lst **lst, char ch, t_lst **sec)
 void	rrotate(t_lst **lst, char ch, t_lst **sec)
 {
 	t_lst	*first;
-	t_lst	*tmp;
+	t_lst	*link;
 
-	tmp = *lst;
-	first = 0;
-	if (!*lst || !(*lst)->next)
+	link = *lst;
+	if (!link || !link->next)
 		write(1, "\n", 1);
 	else
 	{
 		write(1, "rr", 2);
 		write(1, &ch, 1);
-		while ((*lst)->next->next)
-			(*lst) = (*lst)->next;
-		first = lstnew((*lst)->next->val);
-		lstdelone(&(*lst)->next);
-		(*lst)->next = 0;
-		*lst = tmp;
+		link = link->prev->prev;
+		first = lstnew(link->next->val);
+		lstdelone(&link->next);
 		first->next = *lst;
+		first->prev = link;
 		*lst = first;
 		write(1, "\n", 1);
 		ch == 'a' ? printlst(*lst, ch) : printlst(*sec, 'a');
@@ -122,13 +113,16 @@ void	rrotate(t_lst **lst, char ch, t_lst **sec)
 t_lst	*set_stack_a(long *longs, size_t len)
 {
 	t_lst	*a;
+	t_lst   *link;
 
 	a = lstnew((int)longs[--len]);
+	link = a;
 	while (len)
 	{
 		a->prev = lstnew((int)longs[--len]);
 		a->prev->next = a;
 		a = a->prev;
 	}
+	a->prev = link;
 	return (a);
 }

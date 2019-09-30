@@ -12,30 +12,34 @@
 
 #include "../push_swap.h"
 
-void pushIt(t_lst **a, t_lst **b, int len)
+void pushIt(t_lst **a, t_lst **b, int slen)
 {
 	int pivot;
+	int len;
 
-	if (len > 3)
+	len = slen / 2;
+	if (slen > 3)
 	{
-		pivot = get_median(*a, len);
-		if ((*a)->val < pivot)
+		pivot = get_median(*a, slen);
+//		printf("pivot = %d\n", pivot);
+		while (len)
 		{
-			if ((*a)->next->val <= pivot && (*a)->next->val < (*a)->val)
+			if ((*a)->val < pivot)
+			{
+				if ((*a)->next->val <= pivot && (*a)->next->val < (*a)->val)
+					swap(a, 'a', b);
+				push(a, 'b', b);
+				len--;
+			}
+			else if ((*a)->next->val <= pivot)
 				swap(a, 'a', b);
-			push(a, 'b', b);
+			else
+				rotate(a, 'a', b);
+			if (*b)
+				if ((*b)->next)
+					if ((*b)->val < (*b)->next->val)
+						swap(b, 'b', a);
 		}
-		else if ((*a)->next->val <= pivot)
-			swap(a, 'a', b);
-		else
-			rotate(a, 'a', b);
-		if (*b)
-			if ((*b)->next)
-				if ((*b)->val < (*b)->next->val)
-					swap(b, 'b', a);
 		pushIt(a, b, lstlen(*a));
 	}
-sorta(a, b);
-printlst(*a, 'a');
-printlst(*b, 'b');
 }

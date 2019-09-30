@@ -14,34 +14,36 @@
 
 t_lst	*lstnew(int val)
 {
-	t_lst	*arr;
+	t_lst	*list;
 
-	if (!(arr = (t_lst *)malloc(sizeof(t_lst))))
+	if (!(list = (t_lst *)malloc(sizeof(t_lst))))
 		return (NULL);
-	arr->val = val;
-	arr->next = NULL;
-	arr->prev = NULL;
-	return (arr);
+	list->val = val;
+	list->next = NULL;
+	list->prev = NULL;
+	return (list);
 }
 
 void	printlst(t_lst *begin, char lst)
 {
-	char	*val;
+	char	*str;
+	t_lst	*start;
 
-	val = 0;
+	str = 0;
+	start = begin;
 	if (begin)
 	{
 		write(1, "stack ", 6);
 		write(1, &lst, 1);
 		write(1, "\n", 1);
-		while (begin)
+		while (start)
 		{
-			val = ft_itoa(begin->val);
-			write(1, val, ft_strlen(val));
+			str = ft_itoa(start->val);
+			write(1, str, ft_strlen(str));
 			write(1, "\n", 1);
-			begin = begin->next;
-			free(val);
-			val = 0;
+			start = start->next;
+			free(str);
+			str = 0;
 		}
 	}
 }
@@ -50,4 +52,5 @@ void	lstdelone(t_lst **alst)
 {
 	if (*alst != NULL)
 		ft_memdel((void **)alst);
+	*alst = 0;
 }

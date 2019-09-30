@@ -15,7 +15,6 @@
 # define BUFF_SIZE 10000
 # include <string.h>
 # include <sys/types.h>
-# include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # if (BUFF_SIZE <= 0)

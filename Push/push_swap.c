@@ -24,6 +24,9 @@ int		main(int argc, char **argv)
 		a = valider(argv, len);
 		b = 0;
 		pushIt(&a, &b, len);
+		// sorta(&a, &b);
+		printlst(a, 'a');
+		printlst(b, 'b');
 	}
 	else
 		write(1, "Error\n", 6);
