@@ -36,10 +36,13 @@ void    			parser(t_lst **a, t_lst **b);
 void				swap(t_lst **lst, char ch, t_lst **sec);
 void				push(t_lst **from, char ch, t_lst **to);
 void				rotate(t_lst **lst, char ch, t_lst **sec);
-void				rrotate(t_lst **lst, char ch, t_lst **sec);
-void				pushIt(t_lst **a, t_lst **b, int len);
+void				rev_rotate(t_lst **lst, char ch, t_lst **sec);
+void				pushB(t_lst **a, t_lst **b, int len);
+void				pushA(t_lst **a, t_lst **b, int len);
 int					get_median(t_lst *list, size_t len);
-void				sorta(t_lst **a, t_lst **b);
+void				sortS(t_lst **a, t_lst **b, int len);
+void	            sortb(t_lst **a, t_lst **b);
+int                 sortedA(t_lst *list);
 size_t				lstlen(t_lst *list);
 
 #endif

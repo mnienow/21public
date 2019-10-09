@@ -20,7 +20,7 @@ t_lst	*lstnew(int val)
 		return (NULL);
 	list->val = val;
 	list->next = NULL;
-	list->prev = NULL;
+	list->prev = list;
 	return (list);
 }
 

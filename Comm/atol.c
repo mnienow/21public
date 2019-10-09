@@ -39,3 +39,16 @@ long		ft_atol(const char *str)
 	}
 	return ((long)res * sign);
 }
+
+int         sortedA(t_lst *list){
+        while (list->next)
+        {
+            if (list->val < list->next->val)
+                list = list->next;
+            else
+                break ;
+        }
+        if (!list->next)
+            return (1);
+    return (0);
+}

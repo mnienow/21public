@@ -12,34 +12,40 @@
 
 #include "../push_swap.h"
 
-void pushIt(t_lst **a, t_lst **b, int slen)
-{
-	int pivot;
-	int len;
+void        pushA(t_lst **a, t_lst **b, int len) {
+        while(*b)
+            push(b, 'a', a);
+}
 
-	len = slen / 2;
-	if (slen > 3)
+void        pushB(t_lst **a, t_lst **b, int len)
+{
+	int     pivot;
+	int     h_len;
+
+	h_len = len / 2;
+	if (len > 3 || !sortedA(*a))
 	{
-		pivot = get_median(*a, slen);
-//		printf("pivot = %d\n", pivot);
-		while (len)
+		pivot = get_median(*a, len);
+		while (h_len)
 		{
 			if ((*a)->val < pivot)
 			{
-				if ((*a)->next->val <= pivot && (*a)->next->val < (*a)->val)
+				if ((*a)->next->val < pivot && (*a)->next->val < (*a)->val)
 					swap(a, 'a', b);
 				push(a, 'b', b);
-				len--;
+				h_len--;
 			}
-			else if ((*a)->next->val <= pivot)
+			else if ((*a)->next->val < pivot)
 				swap(a, 'a', b);
 			else
-				rotate(a, 'a', b);
-			if (*b)
-				if ((*b)->next)
-					if ((*b)->val < (*b)->next->val)
-						swap(b, 'b', a);
-		}
-		pushIt(a, b, lstlen(*a));
+                rev_rotate(a, 'a', b);
+			if (sortedA(*a)) {
+                break;
+            }
+        }
+		pushB(a, b, lstlen(*a));
 	}
+	else
+        sortS(a, b, len);
+	pushA(a, b, len);
 }
