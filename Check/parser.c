@@ -47,13 +47,13 @@ void    rrot(t_lst **a, t_lst **b, char *line)
     if (line[1] == 'r')
     {
         if (line[2] == 'a')
-            rrotate(a, 'a', b);
+            rev_rotate(a, 'a', b);
         else if (line[2] == 'b')
-            rrotate(b, 'b', a);
+            rev_rotate(b, 'b', a);
         else if (line[2] == 'r')
         {
-            rrotate(a, 'a', b);
-            rrotate(b, 'b', a);
+            rev_rotate(a, 'a', b);
+            rev_rotate(b, 'b', a);
         }
         else
             err();

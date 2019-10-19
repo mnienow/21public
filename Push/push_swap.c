@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 		len = ft_arrlen((void**)argv) - 1;
 		a = valider(argv, len);
 		b = 0;
-		pushB(&a, &b, len);
+		push_swap(&a, &b, len);
 		printlst(a, 'a');
 		printlst(b, 'b');
 	}

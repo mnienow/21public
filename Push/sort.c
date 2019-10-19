@@ -12,25 +12,7 @@
 
 #include "../push_swap.h"
 
-void        pushS(t_lst **a, t_lst **b, int len)
-{
-    if (*b) {
-        while (len) {
-            if ((*b)->val > (*b)->next->val) {
-                if ((*b)->next->val > (*b)->next->next->val) {
-                    push(b, 'b', a);
-                    len--;
-                }
-                else
-                    rotate(b, 'b', a);
-            }
-            else
-                swap(b, 'b', a);
-        }
-    }
-}
-
-void	sortS(t_lst **a, t_lst **b, int len)
+void	sort_a(t_lst **a, t_lst **b)
 {
 	if ((*a)->val > (*a)->next->val)
 	{
@@ -46,22 +28,4 @@ void	sortS(t_lst **a, t_lst **b, int len)
 		if ((*a)->val > (*a)->next->next->val)
 			rev_rotate(a, 'a', b);
 	}
-	pushS(a, b, len);
-}
-
-void	sortb(t_lst **a, t_lst **b)
-{
-//    while (!sorted(*b)) {
-        if ((*b)->val < (*b)->next->val) {
-            if ((*b)->val > (*b)->next->next->val)
-                swap(b, 'b', a);
-            else
-                rotate(b, 'b', a);
-            if ((*b)->val < (*b)->next->val)
-                swap(b, 'b', a);
-        } else {
-            if ((*b)->val > (*b)->next->next->val)
-                rev_rotate(b, 'b', a);
-        }
-//    }
 }

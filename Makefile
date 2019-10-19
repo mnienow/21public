@@ -6,7 +6,7 @@ COMMON = lists.c valider.c ops.c atol.c
 
 SRCS1 = parser.c
 
-SRCS2 = push.c sort.c new.c
+SRCS2 = push.c sort.c median.c
 
 LIB = ft_atoi.c ft_itoa.c ft_strcmp.c ft_strlen.c \
 get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
