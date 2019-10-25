@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:48:56 by mnienow           #+#    #+#             */
-/*   Updated: 2019/03/30 15:48:58 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/25 19:57:08 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int			main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		len = ft_arrlen((void**)argv) - 1;
-		a = valider(argv, len);
+		len = argc - 1;
+		a = valider(&argv[1], len);
 		b = 0;
 		parser(&a, &b);
 		if (finalcheck(a, b))

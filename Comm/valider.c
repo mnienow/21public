@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:48:56 by mnienow           #+#    #+#             */
-/*   Updated: 2019/03/30 15:48:58 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/25 20:02:18 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ long		*get_longs(char **str, size_t len)
 	longs = (long*)malloc(sizeof(long) * len);
 	while (len)
 	{
-		longs[len - 1] = ft_atol(str[len]);
+		longs[len - 1] = ft_atol(str[len - 1]);
 		len--;
 	}
 	return (longs);
@@ -61,8 +61,15 @@ void		check_longs(long *longs, size_t len)
 t_lst 		*valider(char **str, size_t len)
 {
 	long	*longs;
+	char	**args;
 
 	(void)str;
+	if (len < 2)
+	{
+		args = ft_strsplit(str[0], 32);
+		len = ft_arrlen((void**)args);
+		str = args;
+	}
 	check_input_dups(str);
 	longs = get_longs(str, len);
 	check_longs(longs, len);

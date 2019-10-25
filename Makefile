@@ -13,7 +13,7 @@ get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
 ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
 ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
 ft_memdel.c ft_arrlen.c ft_isnumber.c ft_isdigit.c \
-ft_strchr.c
+ft_strchr.c ft_strsplit.c
 
 MAIN1 = checker.c
 
@@ -44,7 +44,9 @@ COMMOUT = $(COMMON:.c=.o)
 all: 
 	gcc $(SRC1) $(SRC2) $(SRCCOMM) -c $(FLAGS)
 	gcc $(OUTPUT1) $(COMMOUT) -o $(CHECK) $(FLAGS)
-	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) $(FLAGS)
+	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) $(FLAGS)\
+
+.PHONY: push
 
 push:
 	gcc $(SRC2) $(SRCCOMM) -c -std=c11 -ggdb3 $(FLAGS)
