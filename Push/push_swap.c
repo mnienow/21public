@@ -20,8 +20,8 @@ int		main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		len = ft_arrlen((void**)argv) - 1;
-		a = valider(argv, len);
+		len = argc - 1;
+		a = valider(&argv[1], len);
 		b = 0;
 		push_swap(&a, &b, len);
 		printlst(a, 'a');
