@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:16:32 by mnienow           #+#    #+#             */
-/*   Updated: 2019/04/05 17:16:34 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/26 17:57:35 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,28 @@ void        qs(int *number, int first, int last)
     }
 }
 
-int         get_median(t_lst *list, size_t len)
+int         get_median(t_lst **list, size_t len)
 {
     int     *ints;
+    int 	i;
+	t_lst	*link;
 
-    ints = lst_to_arr(list, len);
+	i = 0;
+	link = *list;
+    ints = lst_to_arr(*list, len);
     qs(ints, 0, len - 1);
+    if ((*list)->index == NULL)
+	{
+		while (i < len)
+		{
+			if ((*list)->val == ints[i])
+			{
+				(*list)->index = i;
+				i++;
+			}
+			*list = (*list)->prev;
+		}
+		*list = link;
+	}
     return (ints[len / 2]);
 }

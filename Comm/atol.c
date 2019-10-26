@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 15:07:59 by mnienow           #+#    #+#             */
-/*   Updated: 2019/04/14 15:08:02 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/26 18:29:46 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ long		ft_atol(const char *str)
 	return ((long)res * sign);
 }
 
-int         sortedA(t_lst *list){
-        while (list->next)
-        {
-            if (list->val < list->next->val)
-                list = list->next;
-            else
-                break ;
-        }
-        if (!list->next)
-            return (1);
-    return (0);
+t_lst       *set_stack_a(long *longs, size_t len)
+{
+	t_lst   *a;
+	t_lst   *link;
+
+	a = lstnew((int) longs[--len], NULL);
+	link = a;
+	while (len)
+	{
+		a->prev = lstnew((int) longs[--len], NULL);
+		a->prev->next = a;
+		a = a->prev;
+	}
+	a->prev = link;
+	return (a);
 }

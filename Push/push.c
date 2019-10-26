@@ -39,7 +39,7 @@ void        push_swap(t_lst **a, t_lst **b, int len)
 
 	if (len > 3)
 	{
-		pivot = get_median(*a, len);
+		pivot = get_median(a, len);
 		push_b(a, b, len / 2, pivot);
 		push_swap(a, b, lstlen(*a));
 	} else {
