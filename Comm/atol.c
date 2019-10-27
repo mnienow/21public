@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 15:07:59 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/26 18:29:46 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/27 23:38:34 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,4 @@ t_lst       *set_stack_a(long *longs, size_t len)
 	}
 	a->prev = link;
 	return (a);
-}
-
-int        pivot4()
-{
-
 }
