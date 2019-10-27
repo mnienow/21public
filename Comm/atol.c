@@ -45,14 +45,19 @@ t_lst       *set_stack_a(long *longs, size_t len)
 	t_lst   *a;
 	t_lst   *link;
 
-	a = lstnew((int) longs[--len], NULL);
+	a = lstnew((int) longs[--len], 0);
 	link = a;
 	while (len)
 	{
-		a->prev = lstnew((int) longs[--len], NULL);
+		a->prev = lstnew((int) longs[--len], 0);
 		a->prev->next = a;
 		a = a->prev;
 	}
 	a->prev = link;
 	return (a);
+}
+
+int        pivot4()
+{
+
 }

@@ -42,5 +42,6 @@ void				push_swap(t_lst **a, t_lst **b, int len);
 int					get_median(t_lst **list, size_t len);
 void				sort_a(t_lst **a, t_lst **b);
 size_t				lstlen(t_lst *list);
-
+void                insertion_sort(t_lst **a, t_lst **b);
+void                set_indexes(t_lst **list, int *ints, size_t len);
 #endif

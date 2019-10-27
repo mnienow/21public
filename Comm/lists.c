@@ -56,3 +56,19 @@ void	lstdelone(t_lst **alst)
 		ft_memdel((void *)alst);
 	*alst = 0;
 }
+
+void    set_indexes(t_lst **list, int *ints, size_t len)
+{
+    size_t  i;
+    t_lst	*link;
+
+    i = 0;
+    link = *list;
+    while (i < len)
+    {
+        if ((*list)->val == ints[i])
+            (*list)->index = ++i;
+        *list = (*list)->prev;
+    }
+    *list = link;
+}

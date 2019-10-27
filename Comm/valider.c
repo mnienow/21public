@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:48:56 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/25 20:02:32 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/27 14:44:14 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_lst 		*valider(char **str, size_t len)
 	{
 		args = ft_strsplit(str[0], 32);
 		len = ft_arrlen((void**)args);
+		printf("%zu\n", len);
 		str = args;
 	}
 	check_input_dups(str);

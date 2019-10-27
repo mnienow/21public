@@ -6,17 +6,14 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 21:49:49 by mnienow           #+#    #+#             */
-/*   Updated: 2019/04/03 21:49:51 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/27 22:44:43 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void        push_a(t_lst **a, t_lst **b) {
-    while(*b)
-        push(b, 'a', a);
-}
-void push_b(t_lst **a, t_lst **b, int len, int pivot) {
+void push_b(t_lst **a, t_lst **b, int len, int pivot)
+{
     while (len)
     {
         if ((*a)->val < pivot)
@@ -40,11 +37,13 @@ void        push_swap(t_lst **a, t_lst **b, int len)
 	if (len > 3)
 	{
 		pivot = get_median(a, len);
-		push_b(a, b, len / 2, pivot);
+		if (len == 4)
+		    push_b(a, b, 1, pivot);
+		else
+            push_b(a, b, len / 2, pivot);
 		push_swap(a, b, lstlen(*a));
-	} else {
-        sort_a(a, b);
-        push_a(a, b);
 	}
+	else
+        sort_a(a, b);
 }
 
