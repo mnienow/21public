@@ -143,7 +143,7 @@ fi
 
 echo "\nFalse tests:"
 printf "test 1: "
-if [ "$(printf "sa\npb\nrrr" | ./checker 0 9 1 8 2 7 3 6 4 5  | grep "KO" | wc -l)" -eq 1 ]
+if [ "$(printf "sa\npb\nrrr\n" | ./checker 0 9 1 8 2 7 3 6 4 5  | grep "KO" | wc -l)" -eq 1 ]
 then
 echo "✅  - ./checker 0 9 1 8 2 7 3 6 4 5 (instr: sa pb rrr)"
 else

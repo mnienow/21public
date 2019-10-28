@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:48:56 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/27 14:44:14 by null             ###   ########.fr       */
+/*   Updated: 2019/10/28 21:49:37 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		err(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -25,7 +25,7 @@ void		check_input_dups(char **str)
 	char	*string;
 
 	i = 0;
-	while (str[++i])
+	while (str[i])
 	{
 		if (!ft_isnumber(str[i]))
 			err();
@@ -34,19 +34,26 @@ void		check_input_dups(char **str)
 		while (str[++j])
 			if (!ft_strcmp(str[j], string))
 				err();
+		i++;
 	}
 }
 
 long		*get_longs(char **str, size_t len)
 {
 	long	*longs;
+	int		count0;
 
+	count0 = 0;
 	longs = (long*)malloc(sizeof(long) * len);
 	while (len)
 	{
 		longs[len - 1] = ft_atol(str[len - 1]);
+		if (longs[len - 1] == 0)
+			count0++;
 		len--;
 	}
+	if (count0 > 1)
+		err();
 	return (longs);
 }
 
@@ -60,16 +67,7 @@ void		check_longs(long *longs, size_t len)
 t_lst 		*valider(char **str, size_t len)
 {
 	long	*longs;
-	char	**args;
 
-	(void)str;
-	if (len < 2)
-	{
-		args = ft_strsplit(str[0], 32);
-		len = ft_arrlen((void**)args);
-		printf("%zu\n", len);
-		str = args;
-	}
 	check_input_dups(str);
 	longs = get_longs(str, len);
 	check_longs(longs, len);
