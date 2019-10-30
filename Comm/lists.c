@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 18:27:32 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/26 18:37:25 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/30 23:40:44 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	printlst(t_lst *begin, char lst)
 	char	*str;
 	t_lst	*start;
 
-	str = 0;
 	start = begin;
 	if (begin)
 	{
@@ -40,12 +39,10 @@ void	printlst(t_lst *begin, char lst)
 		while (start)
 		{
 			str = ft_itoa(start->val);
-//			write(1, str, ft_strlen(str));
-//			write(1, "\n", 1);
-printf("%s - %d\n", str, start->index);
+			write(1, str, ft_strlen(str));
+			write(1, "\n", 1);
 			start = start->next;
 			free(str);
-			str = 0;
 		}
 	}
 }
@@ -57,7 +54,7 @@ void	lstdelone(t_lst **alst)
 	*alst = 0;
 }
 
-void    set_indexes(t_lst **list, int *ints, size_t len)
+void    set_indexes(t_lst **list, long *longs, size_t len)
 {
     size_t  i;
     t_lst	*link;
@@ -66,9 +63,30 @@ void    set_indexes(t_lst **list, int *ints, size_t len)
     link = *list;
     while (i < len)
     {
-        if ((*list)->val == ints[i])
+        if ((*list)->val == longs[i])
             (*list)->index = ++i;
         *list = (*list)->prev;
     }
     *list = link;
+}
+
+t_lst       *set_stack_a(long *longs, size_t len)
+{
+    int     last;
+    t_lst   *a;
+    t_lst   *link;
+
+    last = (int)len - 1;
+    a = lstnew((int) longs[--len], 0);
+    link = a;
+    while (len)
+    {
+        a->prev = lstnew((int) longs[--len], 0);
+        a->prev->next = a;
+        a = a->prev;
+    }
+    a->prev = link;
+    ft_qs(longs, 0, last++);
+    set_indexes(&a, longs, last);
+    return (a);
 }

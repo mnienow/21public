@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 21:49:49 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/27 22:44:43 by null             ###   ########.fr       */
+/*   Updated: 2019/10/30 23:26:48 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void push_b(t_lst **a, t_lst **b, int len, int pivot)
 {
+//    printf("%d\t%d\n", (*a)->val, pivot);
+//    exit(0);
     while (len)
     {
         if ((*a)->val < pivot)
@@ -25,8 +27,9 @@ void push_b(t_lst **a, t_lst **b, int len, int pivot)
         }
         else if ((*a)->next->val < pivot)
             swap(a, 'a', b);
-        else
+        else {
             rev_rotate(a, 'a', b);
+        }
     }
 }
 
@@ -36,7 +39,7 @@ void        push_swap(t_lst **a, t_lst **b, int len)
 
 	if (len > 3)
 	{
-		pivot = get_median(a, len);
+		pivot = get_median(*a, len);
 		if (len == 4)
 		    push_b(a, b, 1, pivot);
 		else

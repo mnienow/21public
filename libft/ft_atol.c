@@ -6,12 +6,11 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 15:07:59 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/27 23:38:34 by null             ###   ########.fr       */
+/*   Updated: 2019/10/27 23:38:34 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include <string.h>
+#include "libft.h"
 
 long		ft_atol(const char *str)
 {
@@ -38,21 +37,4 @@ long		ft_atol(const char *str)
 		i++;
 	}
 	return ((long)res * sign);
-}
-
-t_lst       *set_stack_a(long *longs, size_t len)
-{
-	t_lst   *a;
-	t_lst   *link;
-
-	a = lstnew((int) longs[--len], 0);
-	link = a;
-	while (len)
-	{
-		a->prev = lstnew((int) longs[--len], 0);
-		a->prev->next = a;
-		a = a->prev;
-	}
-	a->prev = link;
-	return (a);
 }

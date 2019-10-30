@@ -22,12 +22,9 @@ int		main(int argc, char **argv)
 	{
 		len = argc - 1;
 		a = valider(&argv[1], len);
-//		printf("%s\n", argv[1]);
 		b = 0;
 		push_swap(&a, &b, len);
-		insertion_sort(&a, &b);
-//		printlst(a, 'a');
-//		printlst(b, 'b');
+		sort(&a, &b);
 	}
 	else
 		write(1, "Error\n", 6);

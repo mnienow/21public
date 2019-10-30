@@ -2,7 +2,7 @@ CHECK = checker
 
 PUSH = push_swap
 
-COMMON = lists.c valider.c ops.c atol.c
+COMMON = lists.c valider.c ops.c
 
 SRCS1 = parser.c
 
@@ -13,7 +13,7 @@ get_next_line.c ft_bzero.c ft_lstadd.c ft_lstnew.c \
 ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
 ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
 ft_memdel.c ft_arrlen.c ft_isnumber.c ft_isdigit.c \
-ft_strchr.c ft_strsplit.c
+ft_strchr.c ft_strsplit.c ft_qs.c ft_atol.c
 
 MAIN1 = checker.c
 
