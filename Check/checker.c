@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int			finalcheck(t_lst *a, t_lst *b)
+void		finalcheck(t_lst *a, t_lst *b)
 {
 	if (!b && a)
 	{
@@ -24,34 +24,35 @@ int			finalcheck(t_lst *a, t_lst *b)
 				break ;
 		}
 		if (!a->next)
-			return (0);
+            write(1, "OK\n", 3);
 	}
-	return (1);
+    write(1, "KO\n", 3);
 }
 
 int			main(int argc, char **argv)
 {
 	t_lst	*a;
 	t_lst	*b;
-	size_t	len;
-	char 	**args;
+  size_t	len;
+  char    **args;
 
 	if (argc > 1)
 	{
+		len = argc - 1;
 		if (argc == 2)
-			args = ft_strsplit(argv[1], ' ');
+		{
+		    args = ft_strsplit(argv[1], ' ');
+		    len = ft_arrlen((void**)args);
+            a = valider(args, len);
+            free(args);
+        }
 		else
-			args = &argv[1];
-		len = ft_arrlen((void**)args);
-		a = valider(args, len);
+            a = valider(&argv[1], len);
 		b = 0;
 		parser(&a, &b);
-		if (finalcheck(a, b))
-			write(1, "KO\n", 3);
-		else
-			write(1, "OK\n", 3);
+		finalcheck(a, b);
 	}
 	else
 		write(2, "Error\n", 6);
-	return (0);
+	return 0;
 }

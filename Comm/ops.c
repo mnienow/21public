@@ -20,6 +20,7 @@ void		swap_lists(t_lst **a, t_lst **b) {
 	(*a)->index = (*b)->index;
 	(*b)->val = tmp->val;
 	(*b)->index = tmp->index;
+	free(tmp);
 }
 
 void        swap(t_lst **lst, char ch, t_lst **sec)

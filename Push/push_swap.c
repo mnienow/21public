@@ -12,21 +12,15 @@
 
 #include "../push_swap.h"
 
-int 	sorted(t_lst **a)
+int     sorted(t_lst *lst)
 {
-	t_lst *link;
-
-	link = *a;
-	while (link->next)
-	{
-		if (link->val > link->next->val)
-			break;
-		link = link->next;
-	}
-	link = link->next;
-	if (link == NULL)
-		return 1;
-	return 0;
+    while (lst->next)
+    {
+        if (lst->index > lst->next->index)
+            return 0;
+        lst = lst->next;
+    }
+    return 1;
 }
 
 int		main(int argc, char **argv)
@@ -34,27 +28,27 @@ int		main(int argc, char **argv)
 	t_lst	*a;
 	t_lst	*b;
 	size_t	len;
-	char 	**args;
+  char    **args;
 
 	if (argc > 1)
 	{
-		if (argc == 2)
-			args = ft_strsplit(argv[1], ' ');
-		else
-			args = &argv[1];
-		len = ft_arrlen((void**)args);
-		a = valider(args, len);
-		if (sorted(&a))
-		{
-			exit(0);
-		}
+        len = argc - 1;
+        if (argc == 2)
+        {
+            args = ft_strsplit(argv[1], ' ');
+            len = ft_arrlen((void **)args);
+            a = valider(args, len);
+            free(args);
+        }
+	    else
+            a = valider(&argv[1], len);
+	    if (sorted(a))
+            return 0;
 		b = 0;
 		push_swap(&a, &b, len);
-		insertion_sort(&a, &b);
-//		printlst(a, 'a');
-//		printlst(b, 'b');
+		sort(&a, &b);
 	}
 	else
 		write(2, "Error\n", 6);
-	return (0);
+	return 0;
 }

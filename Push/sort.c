@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 21:49:49 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/28 00:41:45 by null             ###   ########.fr       */
+/*   Updated: 2019/10/31 00:02:25 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	sort_a(t_lst **a, t_lst **b)
 {
 	int i;
 
-	i = 0;
-	while (i < 2)
+	i = -1;
+	while (++i < 2)
 	{
 		if ((*a)->val > (*a)->next->val)
 		{
@@ -29,7 +29,6 @@ void	sort_a(t_lst **a, t_lst **b)
 		else if (!((*a)->val < (*a)->next->val &&
 		(*a)->next->val < (*a)->prev->val))
 			rev_rotate(a, 'a', b);
-		i++;
 	}
 }
 
@@ -42,15 +41,15 @@ int     position(int index, t_lst **b)
     link = *b;
     while (len)
     {
-        if (link->index == index)
-            return (1);
+        if (link->index + 1 == index)
+            return 1;
         link = link->next;
         len--;
     }
-    return (0);
+    return 0;
 }
 
-void    insertion_sort(t_lst **a, t_lst **b)
+void    sort(t_lst **a, t_lst **b)
 {
 	while (*b)
 	{

@@ -24,8 +24,8 @@ void		check_input_dups(char **str)
 	size_t	j;
 	char	*string;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
 		if (!ft_isnumber(str[i]))
 			err();
@@ -40,36 +40,42 @@ void		check_input_dups(char **str)
 
 long		*get_longs(char **str, size_t len)
 {
+    size_t  i;
 	long	*longs;
 	int		count0;
 
-	count0 = 0;
+	i = -1;
 	longs = (long*)malloc(sizeof(long) * len);
-	while (len)
-	{
-		longs[len - 1] = ft_atol(str[len - 1]);
-		if (longs[len - 1] == 0)
-			count0++;
-		len--;
-	}
-	if (count0 > 1)
-		err();
+	while (++i < len)
+		longs[i] = ft_atol(str[i]);
+	i = 0;
+    while (len--)
+    {
+        if (longs[len] > 2147483647 || longs[len] < -2147483648)
+            err();
+        if (longs[len] == 0)
+            i++;
+    }
+    if (i > 1)
+        err();
 	return (longs);
-}
-
-void		check_longs(long *longs, size_t len)
-{
-	while (len--)
-		if (longs[len] > 2147483647 || longs[len] < -2147483648)
-			err();
 }
 
 t_lst 		*valider(char **str, size_t len)
 {
 	long	*longs;
+	char	**args;
+    t_lst   *a;
 
+	if (len < 2)
+	{
+		args = ft_strsplit(str[0], 32);
+		len = ft_arrlen((void**)args);
+		str = args;
+	}
 	check_input_dups(str);
 	longs = get_longs(str, len);
-	check_longs(longs, len);
-	return (set_stack_a(longs, len));
+	a = set_stack_a(longs, len);
+	free(longs);
+	return (a);
 }

@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:54:16 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/26 17:40:40 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/30 22:51:33 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct		s_lst
 void				err(void);
 t_lst				*set_stack_a(long *longs, size_t len);
 t_lst 				*valider(char **str, size_t len);
-long				ft_atol(const char *str);
 t_lst				*lstnew(int val, int index);
 void				lstdelone(t_lst **alst);
 void				printlst(t_lst *begin, char lst);
@@ -39,9 +38,11 @@ void				push(t_lst **from, char ch, t_lst **to);
 void				rotate(t_lst **lst, char ch, t_lst **sec);
 void				rev_rotate(t_lst **lst, char ch, t_lst **sec);
 void				push_swap(t_lst **a, t_lst **b, int len);
-int					get_median(t_lst **list, size_t len);
+int					get_median(t_lst *list, size_t len);
 void				sort_a(t_lst **a, t_lst **b);
 size_t				lstlen(t_lst *list);
-void                insertion_sort(t_lst **a, t_lst **b);
-void                set_indexes(t_lst **list, int *ints, size_t len);
+void                sort(t_lst **a, t_lst **b);
+void                set_indexes(t_lst **list, long *longs, size_t len);
+int                 get_value(t_lst *list, int index);
+
 #endif
