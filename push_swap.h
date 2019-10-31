@@ -29,7 +29,6 @@ typedef struct		s_lst
 void				err(void);
 t_lst				*set_stack_a(long *longs, size_t len);
 t_lst 				*valider(char **str, size_t len);
-long				ft_atol(const char *str);
 t_lst				*lstnew(int val, int index);
 void				lstdelone(t_lst **alst);
 void				printlst(t_lst *begin, char lst);
@@ -44,4 +43,6 @@ void				sort_a(t_lst **a, t_lst **b);
 size_t				lstlen(t_lst *list);
 void                sort(t_lst **a, t_lst **b);
 void                set_indexes(t_lst **list, long *longs, size_t len);
+int                 get_value(t_lst *list, int index);
+
 #endif

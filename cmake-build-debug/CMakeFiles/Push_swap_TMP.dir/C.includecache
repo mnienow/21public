@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/17876467/CLionProjects/Push_swap_TMP/Comm/valider.c
+../push_swap.h
+/Users/17876467/CLionProjects/Push_swap_TMP/push_swap.h
+
+/Users/17876467/CLionProjects/Push_swap_TMP/Push/push.c
+../push_swap.h
+/Users/17876467/CLionProjects/Push_swap_TMP/push_swap.h
+
+/Users/17876467/CLionProjects/Push_swap_TMP/Push/push_swap.c
+../push_swap.h
+/Users/17876467/CLionProjects/Push_swap_TMP/push_swap.h
+
+/Users/17876467/CLionProjects/Push_swap_TMP/libft/libft.h
+string.h
+-
+sys/types.h
+-
+unistd.h
+-
+stdlib.h
+-
+
+/Users/17876467/CLionProjects/Push_swap_TMP/push_swap.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+libft/libft.h
+/Users/17876467/CLionProjects/Push_swap_TMP/libft/libft.h
+

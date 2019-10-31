@@ -16,8 +16,8 @@ void	sort_a(t_lst **a, t_lst **b)
 {
 	int i;
 
-	i = 0;
-	while (i < 2)
+	i = -1;
+	while (++i < 2)
 	{
 		if ((*a)->val > (*a)->next->val)
 		{
@@ -29,7 +29,6 @@ void	sort_a(t_lst **a, t_lst **b)
 		else if (!((*a)->val < (*a)->next->val &&
 		(*a)->next->val < (*a)->prev->val))
 			rev_rotate(a, 'a', b);
-		i++;
 	}
 }
 
@@ -43,11 +42,11 @@ int     position(int index, t_lst **b)
     while (len)
     {
         if (link->index + 1 == index)
-            return (1);
+            return 1;
         link = link->next;
         len--;
     }
-    return (0);
+    return 0;
 }
 
 void    sort(t_lst **a, t_lst **b)

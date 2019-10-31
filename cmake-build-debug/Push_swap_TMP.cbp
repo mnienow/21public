@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Push_swap_TMP"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Push_swap_TMP">
+				<Option output="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Push_swap_TMP" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/17876467/CLionProjects/Push_swap_TMP/."/>
+					<Add directory="/Users/17876467/CLionProjects/Push_swap_TMP/libft"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 Push_swap_TMP"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Push_swap_TMP/fast">
+				<Option output="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Push_swap_TMP" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/17876467/CLionProjects/Push_swap_TMP/."/>
+					<Add directory="/Users/17876467/CLionProjects/Push_swap_TMP/libft"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 Push_swap_TMP/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Comm/lists.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Comm/ops.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Comm/valider.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Push/median.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Push/push.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Push/push_swap.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/Push/sort.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_arrlen.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_atoi.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_atol.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_bzero.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_isalnum.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_isalpha.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_isascii.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_isdigit.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_isnumber.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_isprint.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_itoa.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_lstadd.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_lstdel.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_lstdelone.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_lstiter.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_lstmap.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_lstnew.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memalloc.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memccpy.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memchr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memcmp.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memcpy.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memdel.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memmove.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_memset.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putchar.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putchar_fd.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putendl.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putendl_fd.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putnbr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putnbr_fd.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putstr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_putstr_fd.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_qs.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strcat.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strchr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strclr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strcmp.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strcpy.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strdel.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strdup.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strequ.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_striter.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_striteri.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strjoin.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strlcat.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strlen.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strmap.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strmapi.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strncat.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strncmp.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strncpy.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strnequ.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strnew.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strnstr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strrchr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strsplit.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strstr.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strsub.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_strtrim.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_tolower.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/ft_toupper.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/get_next_line.c">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/libft/libft.h">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/push_swap.h">
+			<Option target="Push_swap_TMP"/>
+		</Unit>
+		<Unit filename="/Users/17876467/CLionProjects/Push_swap_TMP/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
