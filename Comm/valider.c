@@ -50,7 +50,7 @@ long		*get_longs(char **str, size_t len)
 	return (longs);
 }
 
-void		check_longs(long *longs, size_t len)
+void		check_longs(const long *longs, size_t len)
 {
 	while (len--)
 		if (longs[len] > 2147483647 || longs[len] < -2147483648)
@@ -61,17 +61,18 @@ t_lst 		*valider(char **str, size_t len)
 {
 	long	*longs;
 	char	**args;
+    t_lst   *a;
 
-	(void)str;
 	if (len < 2)
 	{
 		args = ft_strsplit(str[0], 32);
 		len = ft_arrlen((void**)args);
-		printf("%zu\n", len);
 		str = args;
 	}
 	check_input_dups(str);
 	longs = get_longs(str, len);
 	check_longs(longs, len);
-	return (set_stack_a(longs, len));
+	a = set_stack_a(longs, len);
+	free(longs);
+	return (a);
 }

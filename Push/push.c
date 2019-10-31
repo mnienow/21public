@@ -14,8 +14,6 @@
 
 void push_b(t_lst **a, t_lst **b, int len, int pivot)
 {
-//    printf("%d\t%d\n", (*a)->val, pivot);
-//    exit(0);
     while (len)
     {
         if ((*a)->val < pivot)
