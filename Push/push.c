@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 21:49:49 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/30 23:26:48 by null             ###   ########.fr       */
+/*   Updated: 2019/10/28 22:48:22 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ int         multi_pivot(t_lst *list, int pivot)
         link = link->next;
     }
     return get_value(list, index / 2);
+}
+
+
+void 		sort_b(t_lst **b, t_lst **a, int len, int pivot)
+{
+	t_lst	*link;
+
+	link = *b;
+	while (len)
+	{
+		if (link->val < pivot)
+			rotate(b, 'b', a);
+		else
+			swap(b, 'a', a);
+		len--;
+	}
 }
 
 void        push_b(t_lst **a, t_lst **b, int len, int pivot)
@@ -50,6 +66,10 @@ void        push_b(t_lst **a, t_lst **b, int len, int pivot)
             rev_rotate(a, 'a', b);
         }
     }
+    printlst(*a, 'a');
+    printlst(*b, 'b');
+//    if (!flag)
+//    	sort_b(b, a,len / 2, get_median(b, len) );
 }
 
 //void        repush(t_lst **a, t_lst **b, int len)
@@ -66,7 +86,9 @@ void        push_b(t_lst **a, t_lst **b, int len, int pivot)
 void        push_swap(t_lst **a, t_lst **b, int len)
 {
 	int     pivot;
+	int 	flag;
 
+	flag = 0;
 	if (len > 3)
 	{
 		pivot = get_median(*a, len);
@@ -78,7 +100,7 @@ void        push_swap(t_lst **a, t_lst **b, int len)
 //            repush(a, b, len / 2);
         }
 		else
-            push_b(a, b, len / 2, pivot);
+            push_b(a, b, len / 2, pivot, flag++);
 		push_swap(a, b, lstlen(*a));
 	}
 	else

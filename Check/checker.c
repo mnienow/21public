@@ -33,8 +33,8 @@ int			main(int argc, char **argv)
 {
 	t_lst	*a;
 	t_lst	*b;
-	size_t	len;
-    char    **args;
+  size_t	len;
+  char    **args;
 
 	if (argc > 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 21:49:49 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/27 14:47:11 by null             ###   ########.fr       */
+/*   Updated: 2019/10/28 21:49:42 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int argc, char **argv)
 	t_lst	*a;
 	t_lst	*b;
 	size_t	len;
-    char    **args;
+  char    **args;
 
 	if (argc > 1)
 	{

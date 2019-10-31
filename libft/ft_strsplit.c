@@ -6,12 +6,13 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:12:09 by mnienow           #+#    #+#             */
-/*   Updated: 2018/12/12 19:10:23 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/10/28 21:08:59 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static char	**mfree(char **a, size_t k, size_t i)
 {

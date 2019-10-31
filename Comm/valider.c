@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:48:56 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/27 14:44:14 by null             ###   ########.fr       */
+/*   Updated: 2019/10/28 21:49:37 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		check_input_dups(char **str)
 		while (str[++j])
 			if (!ft_strcmp(str[j], string))
 				err();
+		i++;
 	}
 }
 
@@ -41,6 +42,7 @@ long		*get_longs(char **str, size_t len)
 {
     size_t  i;
 	long	*longs;
+	int		count0;
 
 	i = -1;
 	longs = (long*)malloc(sizeof(long) * len);
