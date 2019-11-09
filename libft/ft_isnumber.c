@@ -6,21 +6,21 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 18:27:32 by mnienow           #+#    #+#             */
-/*   Updated: 2019/03/30 18:27:33 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/11/09 13:39:17 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_isnumber(char *str)
+int			ft_isnumber(char *str)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    if (str[i] == '-' && str[i + 1] && ft_isdigit(str[i + 1]))
-        i++;
-    while (str[i])
-        if (!ft_isdigit(str[i++]))
-            return (0);
-    return (1);
+	i = 0;
+	if (str[i] == '-' && str[i + 1] && ft_isdigit(str[i + 1]))
+		i++;
+	while (str[i])
+		if (!ft_isdigit(str[i++]))
+			return (0);
+	return (1);
 }

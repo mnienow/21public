@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.14.5)
 project(Push_swap C)
 
 set(CMAKE_C_STANDARD 11)
@@ -73,6 +73,8 @@ add_executable(Push_swap
         libft/ft_tolower.c
         libft/ft_toupper.c
         libft/get_next_line.c
+        libft/ft_putchar.c
+        libft/ft_putendl.c
         libft/libft.h
         Push/median.c
         Push/push.c

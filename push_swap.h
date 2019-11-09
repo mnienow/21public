@@ -42,7 +42,7 @@ int					get_median(t_lst *list, size_t len);
 void				sort_a(t_lst **a, t_lst **b);
 size_t				lstlen(t_lst *list);
 void                sort(t_lst **a, t_lst **b);
-void                set_indexes(t_lst **list, long *longs, size_t len);
+void                set_indexes(t_lst **list, const long *longs, size_t len);
 int                 get_value(t_lst *list, int index);
 
 #endif

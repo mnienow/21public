@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:48:56 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/25 19:57:08 by mnienow          ###   ########.fr       */
+/*   Updated: 2019/11/09 12:22:42 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void		finalcheck(t_lst *a, t_lst *b)
 		}
 		if (!a->next)
 		{
-            write(1, "OK\n", 3);
-            exit(0);
-        }
+			write(1, "OK\n", 3);
+			exit(0);
+		}
 	}
-    write(1, "KO\n", 3);
+	write(1, "KO\n", 3);
 }
 
 int			main(int argc, char **argv)
@@ -48,5 +48,5 @@ int			main(int argc, char **argv)
 	}
 	else
 		err(0);
-	return 0;
+	return (0);
 }

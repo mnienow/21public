@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/30 18:27:32 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/30 23:40:44 by mnienow          ###   ########.fr       */
+/*   Created: 2019/11/09 13:43:59 by mnienow           #+#    #+#             */
+/*   Updated: 2019/11/09 14:46:31 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_lst	*lstnew(int val, int index)
+t_lst		*lstnew(int val, int index)
 {
 	t_lst	*list;
 
@@ -25,7 +25,7 @@ t_lst	*lstnew(int val, int index)
 	return (list);
 }
 
-void	printlst(t_lst *begin, char lst)
+void		printlst(t_lst *begin, char lst)
 {
 	char	*str;
 	t_lst	*start;
@@ -47,46 +47,46 @@ void	printlst(t_lst *begin, char lst)
 	}
 }
 
-void	lstdelone(t_lst **alst)
+void		lstdelone(t_lst **alst)
 {
 	if (*alst != NULL)
 		ft_memdel((void *)alst);
 	*alst = 0;
 }
 
-void    set_indexes(t_lst **list, long *longs, size_t len)
+void		set_indexes(t_lst **list, const long *longs, size_t len)
 {
-    size_t  i;
-    t_lst	*link;
+	size_t	i;
+	t_lst	*link;
 
-    i = 0;
-    link = *list;
-    while (i < len)
-    {
-        if ((*list)->val == longs[i])
-            (*list)->index = ++i;
-        *list = (*list)->prev;
-    }
-    *list = link;
+	i = 0;
+	link = *list;
+	while (i < len)
+	{
+		if ((*list)->val == longs[i])
+			(*list)->index = ++i;
+		*list = (*list)->prev;
+	}
+	*list = link;
 }
 
-t_lst       *set_stack_a(long *longs, size_t len)
+t_lst		*set_stack_a(long *longs, size_t len)
 {
-    int     last;
-    t_lst   *a;
-    t_lst   *link;
+	int		last;
+	t_lst	*a;
+	t_lst	*link;
 
-    last = (int)len - 1;
-    a = lstnew((int) longs[--len], 0);
-    link = a;
-    while (len)
-    {
-        a->prev = lstnew((int) longs[--len], 0);
-        a->prev->next = a;
-        a = a->prev;
-    }
-    a->prev = link;
-    ft_qs(longs, 0, last++);
-    set_indexes(&a, longs, last);
-    return (a);
+	last = (int)len - 1;
+	a = lstnew((int)longs[--len], 0);
+	link = a;
+	while (len)
+	{
+		a->prev = lstnew((int)longs[--len], 0);
+		a->prev->next = a;
+		a = a->prev;
+	}
+	a->prev = link;
+	ft_qs(longs, 0, last++);
+	set_indexes(&a, longs, last);
+	return (a);
 }

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/17876467/CLionProjects/Push_swap_TMP
+# Install script for directory: /Users/mnienow/Documents/Push_swap_091119
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/17876467/CLionProjects/Push_swap_TMP/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/mnienow/Documents/Push_swap_091119/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

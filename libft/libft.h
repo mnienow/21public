@@ -6,7 +6,7 @@
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 18:59:05 by mnienow           #+#    #+#             */
-/*   Updated: 2019/10/30 22:03:18 by null             ###   ########.fr       */
+/*   Updated: 2019/11/09 14:46:54 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ typedef struct		s_list
 
 size_t				ft_arrlen(void **arr);
 int					ft_atoi(const char *str);
-long		        ft_atol(const char *str);
+long				ft_atol(const char *str);
 void				ft_bzero(void *s, size_t n);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
-int     			ft_isnumber(char *str);
+int					ft_isnumber(char *str);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -64,7 +64,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putnbr(int n);
 void				ft_putstr_fd(const char *s, int fd);
 void				ft_putstr(char const *s);
-void                ft_qs(long *number, int first, int last);
+void				ft_qs(long *number, int first, int last);
 char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
@@ -94,6 +94,6 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-int 				get_next_line(const int fd, char **line);
+int					get_next_line(int fd, char **line);
 
 #endif
