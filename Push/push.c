@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,35 +12,27 @@
 
 #include "../push_swap.h"
 
-int         multi_pivot(t_lst *list, int pivot)
+int         multi_pivot(t_lst *list, int median)
 {
     t_lst   *link;
-    int     index;
+    int     pivot;
+    int     min;
+    int     max;
 
+    min = 2147483647;
+    max = 0;
     link = list;
     while (link)
     {
-        if (link->val == pivot)
-            index = link->index;
+        if (link->index > max)
+            max = link->index;
+        if (link->index < min)
+            min = link->index;
+        if (link->val == median)
+            pivot = link->index;
         link = link->next;
     }
-    return get_value(list, index / 2);
-}
-
-
-void 		sort_b(t_lst **b, t_lst **a, int len, int pivot)
-{
-	t_lst	*link;
-
-	link = *b;
-	while (len)
-	{
-		if (link->val < pivot)
-			rotate(b, 'b', a);
-		else
-			swap(b, 'a', a);
-		len--;
-	}
+    return get_value(list, min + (pivot - min) / 2);
 }
 
 void        push_b(t_lst **a, t_lst **b, int len, int pivot)
@@ -62,46 +54,43 @@ void        push_b(t_lst **a, t_lst **b, int len, int pivot)
         }
         else if ((*a)->next->val < pivot)
             swap(a, 'a', b);
-        else {
+        else
             rev_rotate(a, 'a', b);
-        }
     }
-    printlst(*a, 'a');
-    printlst(*b, 'b');
-//    if (!flag)
-//    	sort_b(b, a,len / 2, get_median(b, len) );
 }
 
-//void        repush(t_lst **a, t_lst **b, int len)
-//{
-//    int     i;
-//
-//    i = 0;
-//    while (i < len / 2)
-//    {
-//        i++;
-//    }
-//}
+void        re_push(t_lst **a, t_lst **b, int len, int pivot)
+{
+    int     i;
+    int     mpivot;
 
-void        push_swap(t_lst **a, t_lst **b, int len)
+    i = -1;
+    while (*b && ++i < len)
+        push(b, 'a', a);
+    mpivot = multi_pivot(*a, pivot);
+    push_b(a, b, len / 2, mpivot);
+    len = len - lstlen(*b);
+    push_b(a, b, len, pivot);
+}
+
+void        push_swap(t_lst **a, t_lst **b, int len, int i)
 {
 	int     pivot;
-	int 	flag;
 
-	flag = 0;
 	if (len > 3)
 	{
 		pivot = get_median(*a, len);
 		if (len == 4)
 		    push_b(a, b, 1, pivot);
-		else if (len > 62)
+		else if (len > 124)
 		{
             push_b(a, b, len / 2, pivot);
-//            repush(a, b, len / 2);
+            if (i++ == 0)
+                re_push(a, b, len / 2, pivot);
         }
 		else
-            push_b(a, b, len / 2, pivot, flag++);
-		push_swap(a, b, lstlen(*a));
+            push_b(a, b, len / 2, pivot);
+		push_swap(a, b, lstlen(*a), i);
 	}
 	else
         sort_a(a, b);

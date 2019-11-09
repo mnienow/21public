@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
-project(Push_swap_TMP C)
+project(Push_swap C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(libft)
 
-add_executable(Push_swap_TMP
+add_executable(Push_swap
         Comm/lists.c
         Comm/ops.c
         Comm/valider.c

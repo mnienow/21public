@@ -26,9 +26,9 @@ typedef struct		s_lst
 	struct s_lst	*prev;
 }					t_lst;
 
-void				err(void);
+void				err(int n);
 t_lst				*set_stack_a(long *longs, size_t len);
-t_lst 				*valider(char **str, size_t len);
+t_lst 				*valider(char **str, size_t *len);
 t_lst				*lstnew(int val, int index);
 void				lstdelone(t_lst **alst);
 void				printlst(t_lst *begin, char lst);
@@ -37,7 +37,7 @@ void				swap(t_lst **lst, char ch, t_lst **sec);
 void				push(t_lst **from, char ch, t_lst **to);
 void				rotate(t_lst **lst, char ch, t_lst **sec);
 void				rev_rotate(t_lst **lst, char ch, t_lst **sec);
-void				push_swap(t_lst **a, t_lst **b, int len);
+void				push_swap(t_lst **a, t_lst **b, int len, int i);
 int					get_median(t_lst *list, size_t len);
 void				sort_a(t_lst **a, t_lst **b);
 size_t				lstlen(t_lst *list);

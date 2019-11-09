@@ -24,7 +24,7 @@ void    swapper(t_lst **a, t_lst **b, char *line)
         swap(b, 'b', a);
     }
     else
-        err();
+        err(0);
 }
 
 void    rot(t_lst **a, t_lst **b, char *line)
@@ -39,7 +39,7 @@ void    rot(t_lst **a, t_lst **b, char *line)
         rotate(b, 'b', a);
     }
     else
-        err();
+        err(0);
 }
 
 void    rrot(t_lst **a, t_lst **b, char *line)
@@ -56,10 +56,10 @@ void    rrot(t_lst **a, t_lst **b, char *line)
             rev_rotate(b, 'b', a);
         }
         else
-            err();
+            err(0);
     }
     else
-        err();
+        err(0);
 }
 
 void    parser(t_lst **a, t_lst **b)
@@ -82,9 +82,9 @@ void    parser(t_lst **a, t_lst **b)
             else if (ft_strlen(line) == 3)
                 rrot(a, b, line);
             else
-                err();
+                err(0);
         }
         else
-            err();
+            err(0);
     }
 }

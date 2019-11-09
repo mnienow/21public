@@ -12,10 +12,15 @@
 
 #include "../push_swap.h"
 
-void		err(void)
+void		err(int n)
 {
-	write(2, "Error\n", 6);
-	exit(0);
+    if (!n)
+	    write(2, "Error\n", 6);
+    else if (n == 1)
+        write(2, "Method error(1)\n", 16);
+    else
+        write(2, "Method error(2)\n", 16);
+	exit(n);
 }
 
 void		check_input_dups(char **str)
@@ -28,13 +33,12 @@ void		check_input_dups(char **str)
 	while (str[++i])
 	{
 		if (!ft_isnumber(str[i]))
-			err();
+			err(0);
 		string = str[i];
 		j = i;
 		while (str[++j])
 			if (!ft_strcmp(str[j], string))
-				err();
-		i++;
+				err(0);
 	}
 }
 
@@ -42,7 +46,6 @@ long		*get_longs(char **str, size_t len)
 {
     size_t  i;
 	long	*longs;
-	int		count0;
 
 	i = -1;
 	longs = (long*)malloc(sizeof(long) * len);
@@ -52,30 +55,30 @@ long		*get_longs(char **str, size_t len)
     while (len--)
     {
         if (longs[len] > 2147483647 || longs[len] < -2147483648)
-            err();
+            err(0);
         if (longs[len] == 0)
             i++;
     }
     if (i > 1)
-        err();
+        err(0);
 	return (longs);
 }
 
-t_lst 		*valider(char **str, size_t len)
+t_lst 		*valider(char **str, size_t *len)
 {
 	long	*longs;
 	char	**args;
     t_lst   *a;
 
-	if (len < 2)
+	if (*len < 2)
 	{
 		args = ft_strsplit(str[0], 32);
-		len = ft_arrlen((void**)args);
+		*len = ft_arrlen((void**)args);
 		str = args;
 	}
 	check_input_dups(str);
-	longs = get_longs(str, len);
-	a = set_stack_a(longs, len);
+    longs = get_longs(str, *len);
+	a = set_stack_a(longs, *len);
 	free(longs);
 	return (a);
 }

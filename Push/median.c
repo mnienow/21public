@@ -27,37 +27,39 @@ size_t      lstlen(t_lst *list)
 
 int         get_value(t_lst *list, int index)
 {
-    int value;
+    t_lst   *link;
 
-    value = 0;
-    while (list)
+    link = list;
+    while (link)
     {
-        if (list->index == index)
-            value = list->val;
-        list = list->next;
+        if (link->index == index)
+            return link->val;
+        link = link->next;
     }
-    return value;
+    err(2);
+    return 0;
 }
 
 int         get_median(t_lst *list, size_t len)
 {
+    size_t  i;
     int     min;
     int     max;
     t_lst   *link;
 
+    i = -1;
     min = 2147483647;
     max = 0;
     link = list;
-    while (link && len)
+    while (link && ++i < len)
     {
         if (min > link->index)
             min = link->index;
         if  (max < link->index)
             max = link->index;
         link = link->next;
-        len--;
     }
     if (len == 4)
         return get_value(list, min + 1);
-    return (get_value(list,max - ((max - min) / 2)));
+    return (get_value(list,max - (max - min) / 2));
 }

@@ -28,27 +28,18 @@ int		main(int argc, char **argv)
 	t_lst	*a;
 	t_lst	*b;
 	size_t	len;
-  char    **args;
 
 	if (argc > 1)
 	{
         len = argc - 1;
-        if (argc == 2)
-        {
-            args = ft_strsplit(argv[1], ' ');
-            len = ft_arrlen((void **)args);
-            a = valider(args, len);
-            free(args);
-        }
-	    else
-            a = valider(&argv[1], len);
+        a = valider(&argv[1], &len);
 	    if (sorted(a))
             return 0;
 		b = 0;
-		push_swap(&a, &b, len);
+		push_swap(&a, &b, len, 0);
 		sort(&a, &b);
 	}
 	else
-		write(2, "Error\n", 6);
+		err(0);
 	return 0;
 }

@@ -24,7 +24,10 @@ void		finalcheck(t_lst *a, t_lst *b)
 				break ;
 		}
 		if (!a->next)
+		{
             write(1, "OK\n", 3);
+            exit(0);
+        }
 	}
     write(1, "KO\n", 3);
 }
@@ -33,26 +36,17 @@ int			main(int argc, char **argv)
 {
 	t_lst	*a;
 	t_lst	*b;
-  size_t	len;
-  char    **args;
+	size_t	len;
 
 	if (argc > 1)
 	{
 		len = argc - 1;
-		if (argc == 2)
-		{
-		    args = ft_strsplit(argv[1], ' ');
-		    len = ft_arrlen((void**)args);
-            a = valider(args, len);
-            free(args);
-        }
-		else
-            a = valider(&argv[1], len);
+		a = valider(&argv[1], &len);
 		b = 0;
 		parser(&a, &b);
 		finalcheck(a, b);
 	}
 	else
-		write(2, "Error\n", 6);
+		err(0);
 	return 0;
 }
