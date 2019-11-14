@@ -34,7 +34,7 @@ int			main(int argc, char **argv)
 		len = argc - 1;
 		a = valider(&argv[1], &len);
 		if (sorted(a))
-			return (0);
+			exit(0);
 		b = 0;
 		push_swap(&a, &b, len, 0);
 		sort(&a, &b);

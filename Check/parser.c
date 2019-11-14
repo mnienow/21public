@@ -87,4 +87,5 @@ void	parser(t_lst **a, t_lst **b)
 		else
 			err(0);
 	}
+	free(line);
 }

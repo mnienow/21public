@@ -42,20 +42,17 @@ OUTPUT2 = $(MAIN2:.c=.o) $(LIB:.c=.o) $(SRCS2:.c=.o)
 
 COMMOUT = $(COMMON:.c=.o)
 
-all: 
-	gcc $(SRC1) $(SRC2) $(SRCCOMM) -c $(FLAGS)
+#.PHONY: push_swap checker
+
+all: $(CHECK) $(PUSH)
+
+$(PUSH):
+	gcc $(SRC2) $(SRCCOMM) -c $(FLAGS)
+	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) $(FLAGS)
+
+$(CHECK):
+	gcc $(SRC1) $(SRCCOMM) -c $(FLAGS)
 	gcc $(OUTPUT1) $(COMMOUT) -o $(CHECK) $(FLAGS)
-	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) $(FLAGS)\
-
-.PHONY: push
-
-push:
-	gcc $(SRC2) $(SRCCOMM) -c -std=c11 -ggdb3 $(FLAGS)
-	gcc $(OUTPUT2) $(COMMOUT) -o $(PUSH) -std=c11 -ggdb3 $(FLAGS)
-
-check:
-	gcc $(SRC1) $(SRCCOMM) -c -std=c11 -ggdb3 $(FLAGS)
-	gcc $(OUTPUT1) $(COMMOUT) -o $(CHECK) -std=c11 -ggdb3 $(FLAGS)
 
 clean:
 	make -C ./libft clean

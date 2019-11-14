@@ -48,5 +48,5 @@ int			main(int argc, char **argv)
 	}
 	else
 		err(0);
-	return (0);
+	exit(0);
 }
