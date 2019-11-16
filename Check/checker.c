@@ -46,7 +46,5 @@ int			main(int argc, char **argv)
 		parser(&a, &b);
 		finalcheck(a, b);
 	}
-	else
-		err(0);
 	exit(0);
 }

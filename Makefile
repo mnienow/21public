@@ -14,7 +14,7 @@ ft_strdup.c ft_strjoin.c ft_strnew.c ft_strsub.c \
 ft_memcpy.c ft_strcat.c ft_strcpy.c ft_strncpy.c \
 ft_memdel.c ft_arrlen.c ft_isnumber.c ft_isdigit.c \
 ft_strchr.c ft_strsplit.c ft_qs.c ft_atol.c \
-ft_putendl.c ft_putchar.c
+ft_putendl.c ft_putchar.c ft_strdel.c
 
 MAIN1 = checker.c
 

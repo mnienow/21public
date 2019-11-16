@@ -5,91 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnienow <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 19:31:00 by mnienow           #+#    #+#             */
-/*   Updated: 2018/12/18 20:20:58 by mnienow          ###   ########.fr       */
+/*   Created: 2019/07/28 15:03:46 by mnienow           #+#    #+#             */
+/*   Updated: 2019/08/01 19:54:48 by mnienow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-int	wtfstrings(const int fd, char **line, char **mbuf, int ret)
+static int	appendline(char **s, char **line)
 {
-	if (mbuf[fd][0] && !ret)
-	{
-		CHN(*line = ft_strdup(mbuf[fd]));
-		free(mbuf[fd]);
-		mbuf[fd] = NULL;
-		return (1);
-	}
-	return (0);
-}
-
-int	nextbuf(const int fd, char **line, char **mbuf)
-{
-	size_t	i;
+	int		len;
 	char	*tmp;
 
-	i = 0;
-	tmp = NULL;
-	while (mbuf[fd][i])
+	len = 0;
+	while ((*s)[len] != '\n' && (*s)[len] != '\0')
+		len++;
+	if ((*s)[len] == '\n')
 	{
-		if (mbuf[fd][i] == '\n')
-		{
-			mbuf[fd][i] = '\0';
-			CHN(*line = ft_strdup(mbuf[fd]));
-			tmp = mbuf[fd];
-			CHN(mbuf[fd] = ft_strdup(&mbuf[fd][++i]));
-			free(tmp);
-			return (1);
-		}
-		i++;
+		*line = ft_strsub(*s, 0, len);
+		tmp = ft_strdup(&((*s)[len + 1]));
+		free(*s);
+		*s = tmp;
+		if ((*s)[0] == '\0')
+			ft_strdel(s);
 	}
-	return (0);
+	else
+	{
+		*line = ft_strdup(*s);
+		ft_strdel(s);
+	}
+	return (1);
 }
 
-int	readnext(const int fd, char **line, char **mbuf, char *tmp)
+static int	output(char **s, char **line, int ret, int fd)
 {
-	int		ret;
-	char	buf[BUFF_SIZE + 1];
-
-	while ((ret = read(fd, buf, BUFF_SIZE)))
-	{
-		CHN(ret > 0);
-		buf[ret] = '\0';
-		if (!ft_strchr(buf, '\n'))
-		{
-			tmp = mbuf[fd];
-			CHN(mbuf[fd] = ft_strjoin(mbuf[fd], buf));
-			free(tmp);
-		}
-		else
-		{
-			ft_strchr(buf, '\n')[0] = '\0';
-			CHN(*line = ft_strjoin(mbuf[fd], buf));
-			free(mbuf[fd]);
-			CHN(mbuf[fd] = ft_strdup((char*)buf + ft_strlen(buf) + 1));
-			return (1);
-		}
-	}
-	R(wtfstrings(fd, line, mbuf, ret));
+	if (ret < 0)
+		return (-1);
+	else if (ret == 0 && s[fd] == NULL)
+		return (0);
+	else
+		return (appendline(&s[fd], line));
 }
 
-int	get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
-	static char	**mbuf;
+	int			ret;
+	static char	*s[FD_SIZE];
+	char		buff[BUFF_SIZE + 1];
 	char		*tmp;
 
-	tmp = NULL;
-	CH(!line || fd < 0 || fd > 10400);
-	if (!mbuf)
-		CHN(mbuf = (char**)malloc(sizeof(char*) * 10400));
-	if (!mbuf[fd])
-		CHN(mbuf[fd] = ft_strnew(0));
-	if (nextbuf(fd, line, mbuf) > 0 ||
-			readnext(fd, line, mbuf, tmp) > 0)
-		return (1);
-	if (nextbuf(fd, line, mbuf) < 0 || readnext(fd, line, mbuf, tmp) < 0)
+	if (fd < 0 || line == NULL)
 		return (-1);
-	CHN(*line = ft_strnew(0));
-	return (0);
+	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[ret] = '\0';
+		if (s[fd] == NULL)
+			s[fd] = ft_strdup(buff);
+		else
+		{
+			tmp = ft_strjoin(s[fd], buff);
+			free(s[fd]);
+			s[fd] = tmp;
+		}
+		if (ft_strchr(s[fd], '\n'))
+			break ;
+	}
+	return (output(s, line, ret, fd));
 }

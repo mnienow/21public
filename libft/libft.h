@@ -12,7 +12,11 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define BUFF_SIZE 10000
+# define BUFF_SIZE 8
+# define FD_SIZE 4096
+# include <stdio.h>
+# include <fcntl.h>
+# include <sys/uio.h>
 # include <string.h>
 # include <sys/types.h>
 # include <unistd.h>
@@ -20,9 +24,6 @@
 # if (BUFF_SIZE <= 0)
 #  error BUFF_SIZE cannot be <= 0
 # endif
-# define CHN(y) if ((y) == 0) return (-1)
-# define CH(x) if ((x) != 0) return (-1)
-# define R(z) return (z)
 
 typedef struct		s_list
 {

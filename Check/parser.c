@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	swapper(t_lst **a, t_lst **b, char *line)
+void		swapper(t_lst **a, t_lst **b, char *line)
 {
 	if (!ft_strcmp(line, "sb"))
 		swap(b, 'b', a);
@@ -27,7 +27,7 @@ void	swapper(t_lst **a, t_lst **b, char *line)
 		err(0);
 }
 
-void	rot(t_lst **a, t_lst **b, char *line)
+void		rot(t_lst **a, t_lst **b, char *line)
 {
 	if (line[1] == 'a')
 		rotate(a, 'a', b);
@@ -42,7 +42,7 @@ void	rot(t_lst **a, t_lst **b, char *line)
 		err(0);
 }
 
-void	rrot(t_lst **a, t_lst **b, char *line)
+void		rrot(t_lst **a, t_lst **b, char *line)
 {
 	if (line[1] == 'r')
 	{
@@ -62,9 +62,9 @@ void	rrot(t_lst **a, t_lst **b, char *line)
 		err(0);
 }
 
-void	parser(t_lst **a, t_lst **b)
+void		parser(t_lst **a, t_lst **b)
 {
-	char *line;
+	char	*line;
 
 	line = 0;
 	while (get_next_line(0, &line))
@@ -86,6 +86,6 @@ void	parser(t_lst **a, t_lst **b)
 		}
 		else
 			err(0);
+		free(line);
 	}
-	free(line);
 }
